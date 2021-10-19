@@ -1,0 +1,27 @@
+{
+  "recommendations": [
+    "ldez.ignore-files",
+    "codezombiech.gitignore",
+    "eamodio.gitlens",
+    "mhutchie.git-graph",
+    "ms-vscode-remote.remote-containers",
+    "nepaul.editorconfiggenerator",
+    "dbaeumer.vscode-eslint",
+    "vscode-icons-team.vscode-icons",
+    "truman.autocomplate-shell",
+    "esbenp.prettier-vscode",
+    "foxundermoon.shell-format",
+    "fabiospampinato.vscode-highlight",
+    "visualstudioexptteam.vscodeintellicode",
+    "wakatime.vscode-wakatime",
+    "mutantdino.resourcemonitor",
+    "christian-kohler.path-intellisense",
+    "christian-kohler.npm-intellisense",
+    "shd101wyy.markdown-preview-enhanced",
+    "yzhang.markdown-all-in-one",
+    "ms-vscode.vscode-typescript-next",
+    "oderwat.indent-rainbow",
+    "wix.vscode-import-cost",
+    "adpyke.codesnap"
+  ]
+}

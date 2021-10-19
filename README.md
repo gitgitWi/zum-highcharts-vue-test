@@ -1,2 +1,3 @@
-# zum-highcharts-vue-test
+# ZUM Highcharts Vue Test
+
 highcharts-vue treemap test for ZUM finance
