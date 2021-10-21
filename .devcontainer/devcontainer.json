@@ -44,7 +44,10 @@
     "devonray.snippet",
     "dbaeumer.vscode-eslint",
     "nepaul.editorconfiggenerator",
-    "vscode-icons-team.vscode-icons"
+    "vscode-icons-team.vscode-icons",
+    "kisstkondoros.vscode-codemetrics",
+    "formulahendry.auto-close-tag",
+    "formulahendry.auto-rename-tag"
   ],
 
   "postCreateCommand": "source ~/.zshrc"

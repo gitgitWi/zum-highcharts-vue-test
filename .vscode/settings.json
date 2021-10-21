@@ -1,9 +1,9 @@
 {
   "editor.formatOnSave": true,
-  "editor.formatOnSaveMode": "modificationsIfAvailable",
+  "editor.formatOnSaveMode": "modifications",
   "files.autoSave": "onFocusChange",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "prettier.singleQuote": false,
+  "prettier.singleQuote": true,
   "prettier.endOfLine": "lf",
   "[dockerfile]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"
@@ -16,5 +16,15 @@
   },
   "[properties]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true,
+  "javascript.inlayHints.parameterNames.enabled": "literals",
+  "javascript.inlayHints.parameterTypes.enabled": true,
+  "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "typescript.inlayHints.parameterNames.enabled": "literals",
+  "typescript.inlayHints.parameterTypes.enabled": true,
+  "[vue]": {
+    "editor.defaultFormatter": "octref.vetur"
   }
 }

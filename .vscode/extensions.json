@@ -23,6 +23,7 @@
     "oderwat.indent-rainbow",
     "wix.vscode-import-cost",
     "adpyke.codesnap",
-    "dennisvhest.npm-browser"
+    "dennisvhest.npm-browser",
+    "kisstkondoros.vscode-codemetrics"
   ]
 }
