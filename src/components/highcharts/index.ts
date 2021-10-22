@@ -1,5 +1,7 @@
-import { VueType } from "../../types";
+import { VueType } from "@/types";
 
-export { Highcharts } from "./HighCharts";
+export { HighchartsVue } from "@/components/highcharts/config";
+
+// export { Highcharts } from "./HighCharts";
 export const TreemapChart = (): Promise<VueType> =>
   import("./TreemapChart.vue");
