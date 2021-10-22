@@ -1,7 +1,10 @@
+export { Options } from "highcharts";
+
 interface TreemapItem {
   id: string;
   name: string;
   marketCap: number;
+  value: number;
 }
 
 export interface TreemapStock extends TreemapItem {
@@ -12,15 +15,16 @@ export interface TreemapStock extends TreemapItem {
   /** 등락율 */
   gains: number;
   /** 썸네일 이미지 */
-  thumbnailSrc: string;
+  logoSrc?: string;
 }
 
 export interface TreemapSector extends TreemapItem {
   stocks: TreemapStock[];
 }
 
+type MarketNames = "kospi" | "kosdaq" | "dow" | "nasdaq" | "dummy";
+
 export interface TreemapMarket {
-  /** kospi, kosdaq, dow30, nasdaq */
-  name: string;
+  name: MarketNames;
   sectors: TreemapSector[];
 }
