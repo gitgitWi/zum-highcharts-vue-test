@@ -1,17 +1,22 @@
-import Highcharts, { Options } from "highcharts";
+import Highcharts from "highcharts";
+import HighchartsVue from "highcharts-vue";
 import AccessibilityModule from "highcharts/modules/accessibility";
 import DataModule from "highcharts/modules/data";
 import BoostModule from "highcharts/modules/boost";
+import HeatmapModule from "highcharts/modules/heatmap";
 import TreemapModule from "highcharts/modules/treemap";
+import ExportingModule from "highcharts/modules/exporting";
 
-import { globalOptions, getChartOptions } from "./options";
+import { globalOptions } from "./options";
 
 /** Add Modules */
 AccessibilityModule(Highcharts);
 BoostModule(Highcharts);
 DataModule(Highcharts);
+HeatmapModule(Highcharts);
 TreemapModule(Highcharts);
+ExportingModule(Highcharts);
 
 Highcharts.setOptions(globalOptions);
 
-export { Highcharts, Options, getChartOptions };
+export { HighchartsVue };
