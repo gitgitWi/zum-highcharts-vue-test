@@ -2,17 +2,19 @@
   <div id="app">
     <h1>ZUM 국내/해외증시 MAP 테스트</h1>
     <treemap-chart />
+    <footer-wrapper />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import { TreemapChart } from "./components";
+import { TreemapChart, FooterWrapper } from "./components";
 
 export default Vue.extend({
   name: "App",
   components: {
     TreemapChart,
+    FooterWrapper,
   },
 });
 </script>
