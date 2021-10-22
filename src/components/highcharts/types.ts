@@ -1,4 +1,9 @@
-export { Options } from "highcharts";
+export {
+  Options,
+  SeriesOptionsType,
+  TooltipFormatterContextObject,
+  TooltipFormatterCallbackFunction,
+} from "highcharts";
 
 interface TreemapItem {
   id: string;
