@@ -13,6 +13,7 @@
   },
   "main": "index.js",
   "dependencies": {
+    "axios": "^0.23.0",
     "core-js": "^3.6.5",
     "highcharts": "^9.2.2",
     "highcharts-vue": "^1.4.0",

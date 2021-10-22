@@ -47,7 +47,8 @@
     "vscode-icons-team.vscode-icons",
     "kisstkondoros.vscode-codemetrics",
     "formulahendry.auto-close-tag",
-    "formulahendry.auto-rename-tag"
+    "formulahendry.auto-rename-tag",
+    "mikestead.dotenv"
   ],
 
   "postCreateCommand": "source ~/.zshrc"
