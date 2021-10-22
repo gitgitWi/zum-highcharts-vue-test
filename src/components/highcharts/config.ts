@@ -6,6 +6,7 @@ import BoostModule from "highcharts/modules/boost";
 import HeatmapModule from "highcharts/modules/heatmap";
 import TreemapModule from "highcharts/modules/treemap";
 import ExportingModule from "highcharts/modules/exporting";
+import SeriesLabelModule from "highcharts/modules/series-label";
 
 import { globalOptions } from "./options";
 
@@ -16,6 +17,7 @@ DataModule(Highcharts);
 HeatmapModule(Highcharts);
 TreemapModule(Highcharts);
 ExportingModule(Highcharts);
+SeriesLabelModule(Highcharts);
 
 Highcharts.setOptions(globalOptions);
 
