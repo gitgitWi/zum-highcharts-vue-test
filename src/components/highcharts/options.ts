@@ -23,15 +23,6 @@ export const getChartOptions = (data: Record<string, unknown>[]): Options => ({
     styledMode: true,
   },
 
-  // 등락율에 따른 색상
-  colorAxis: {
-    minColor: "blue",
-    // min: -100,
-    maxColor: "red",
-    // max: 100,
-    showInLegend: true,
-  },
-
   /**
    * Treemap Series
    * @see {https://api.highcharts.com/highcharts/series.treemap}

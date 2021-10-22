@@ -11,10 +11,12 @@
 <script lang="ts">
 import Vue from "vue";
 import usDummy from "$assets/us-dummy.json";
-import { getChartOptions } from "@/components/highcharts/options";
-import { TreemapSector } from "@/types";
 
-const { random, floor } = Math;
+import { TreemapSector } from "@/types";
+import { getChartOptions } from "@/components/highcharts/options";
+import { getStockColor } from "@/components/highcharts/utils";
+
+const { random } = Math;
 
 export default Vue.extend({
   name: "TreemapChart",
@@ -47,15 +49,20 @@ export default Vue.extend({
       sectors.forEach(({ name: sectorName, stocks }, sectorId) => {
         const value = stocks.reduce(
           (acc, { name: stockName, marketCap }, stockId) => {
-            const gains = floor(random() * 100) * (random() < 0.5 ? -1 : +1);
+            const gains = random() * 5 * (random() < 0.5 ? -1 : +1);
             const gainsColor =
               gains > 0 ? "blue" : gains === 0 ? "grey" : "red";
+
             points.push({
               id: `${sectorId}_${stockId}`,
-              name: `<span>${stockName}</span><br /><span style="color: ${gainsColor}; text-shadow: 0 0 3px grey; font-size: 0.8em">${gains.toLocaleString()}%</span>`,
+              name: `<span>${stockName}</span><br /><span style="color: ${gainsColor}; text-shadow: 0 0 3px grey; font-size: 0.8em">${gains
+                .toFixed(2)
+                .toLocaleString()}%</span>`,
+              // name: stockName,
               value: marketCap,
               parent: `${sectorId}`,
-              colorValue: gains,
+              color: getStockColor(gains),
+              gains,
             });
             return (acc += marketCap);
           },
@@ -74,7 +81,7 @@ export default Vue.extend({
 });
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 #chart-wrapper {
   width: 100%;
   min-width: 600px;
