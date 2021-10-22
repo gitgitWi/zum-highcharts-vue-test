@@ -1,1 +1,1 @@
-export { Highcharts, TreemapChart } from "./highcharts";
+export { TreemapChart } from "./highcharts";
