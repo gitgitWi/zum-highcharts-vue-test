@@ -1,0 +1,225 @@
+{
+  "name": "dummy",
+  "sectors": [
+    {
+      "id": "0",
+      "name": "Technology",
+      "marketCap": 0,
+      "stocks": [
+        {
+          "name": "AAPL",
+          "sectorId": "Technology",
+          "logoSrc": "https://finnhub.io/api/logo?symbol=AAPL",
+          "marketCap": 2459028
+        },
+        {
+          "name": "DELL",
+          "sectorId": "Technology",
+          "logoSrc": "https://finnhub.io/api/logo?symbol=DELL",
+          "marketCap": 84782.52
+        },
+        {
+          "name": "HPQ",
+          "sectorId": "Technology",
+          "logoSrc": "https://finnhub.io/api/logo?symbol=HPQ",
+          "marketCap": 33261.69
+        },
+        {
+          "name": "NTAP",
+          "sectorId": "Technology",
+          "logoSrc": "https://finnhub.io/api/logo?symbol=NTAP",
+          "marketCap": 20307.79
+        },
+        {
+          "name": "HPE",
+          "sectorId": "Technology",
+          "logoSrc": "https://finnhub.io/api/logo?symbol=HPE",
+          "marketCap": 20104.73
+        },
+        {
+          "name": "WDC",
+          "sectorId": "Technology",
+          "logoSrc": "https://finnhub.io/api/logo?symbol=WDC",
+          "marketCap": 17336.45
+        },
+        {
+          "name": "PSTG",
+          "sectorId": "Technology",
+          "logoSrc": "https://finnhub.io/api/logo?symbol=PSTG",
+          "marketCap": 7394.822
+        },
+        {
+          "name": "XRX",
+          "sectorId": "Technology",
+          "logoSrc": "",
+          "marketCap": 3667.878
+        },
+        {
+          "name": "DDD",
+          "sectorId": "Technology",
+          "logoSrc": "https://finnhub.io/api/logo?symbol=DDD",
+          "marketCap": 3561.698
+        }
+      ]
+    },
+    {
+      "id": "1",
+      "name": "Media",
+      "marketCap": 0,
+      "stocks": [
+        {
+          "name": "GOOGL",
+          "sectorId": "Media",
+          "logoSrc": "https://finnhub.io/api/logo?symbol=GOOGL",
+          "marketCap": 1913825
+        },
+        {
+          "name": "FB",
+          "sectorId": "Media",
+          "logoSrc": "https://finnhub.io/api/logo?symbol=FB",
+          "marketCap": 958582.9
+        },
+        {
+          "name": "SNAP",
+          "sectorId": "Media",
+          "logoSrc": "https://finnhub.io/api/logo?symbol=SNAP",
+          "marketCap": 120843.9
+        },
+        {
+          "name": "TWTR",
+          "sectorId": "Media",
+          "logoSrc": "https://finnhub.io/api/logo?symbol=TWTR",
+          "marketCap": 52753.57
+        },
+        {
+          "name": "MTCH",
+          "sectorId": "Media",
+          "logoSrc": "",
+          "marketCap": 44480.71
+        },
+        {
+          "name": "PINS",
+          "sectorId": "Media",
+          "logoSrc": "https://finnhub.io/api/logo?symbol=PINS",
+          "marketCap": 35828.47
+        },
+        {
+          "name": "ABIT",
+          "sectorId": "Media",
+          "logoSrc": "",
+          "marketCap": 32395.14
+        },
+        {
+          "name": "ZI",
+          "sectorId": "Media",
+          "logoSrc": "https://finnhub.io/api/logo?symbol=ZI",
+          "marketCap": 27248.69
+        },
+        {
+          "name": "ZG",
+          "sectorId": "Media",
+          "logoSrc": "https://finnhub.io/api/logo?symbol=ZG",
+          "marketCap": 22294.79
+        },
+        {
+          "name": "IAC",
+          "sectorId": "Media",
+          "logoSrc": "https://finnhub.io/api/logo?symbol=IAC",
+          "marketCap": 13240.62
+        }
+      ]
+    },
+    {
+      "id": "1",
+      "name": "Biotechnology",
+      "marketCap": 0,
+      "stocks": [
+        {
+          "name": "ABBV",
+          "sectorId": "Biotechnology",
+          "logoSrc": "https://finnhub.io/api/logo?symbol=ABBV",
+          "marketCap": 189847.7
+        },
+        {
+          "name": "MRNA",
+          "sectorId": "Biotechnology",
+          "logoSrc": "https://finnhub.io/api/logo?symbol=MRNA",
+          "marketCap": 134660.5
+        },
+        {
+          "name": "AMGN",
+          "sectorId": "Biotechnology",
+          "logoSrc": "https://finnhub.io/api/logo?symbol=AMGN",
+          "marketCap": 117420.5
+        },
+        {
+          "name": "GILD",
+          "sectorId": "Biotechnology",
+          "logoSrc": "https://finnhub.io/api/logo?symbol=GILD",
+          "marketCap": 83879.85
+        },
+        {
+          "name": "REGN",
+          "sectorId": "Biotechnology",
+          "logoSrc": "https://finnhub.io/api/logo?symbol=REGN",
+          "marketCap": 59051.13
+        },
+        {
+          "name": "VRTX",
+          "sectorId": "Biotechnology",
+          "logoSrc": "https://finnhub.io/api/logo?symbol=VRTX",
+          "marketCap": 46904.65
+        }
+      ]
+    },
+    {
+      "id": "1",
+      "name": "Automobiles",
+      "marketCap": 0,
+      "stocks": [
+        {
+          "name": "TSLA",
+          "sectorId": "Automobiles",
+          "logoSrc": "https://finnhub.io/api/logo?symbol=TSLA",
+          "marketCap": 855640.4
+        },
+        {
+          "name": "GM",
+          "sectorId": "Automobiles",
+          "logoSrc": "https://finnhub.io/api/logo?symbol=GM",
+          "marketCap": 82530.5
+        },
+        {
+          "name": "F",
+          "sectorId": "Automobiles",
+          "logoSrc": "https://finnhub.io/api/logo?symbol=F",
+          "marketCap": 61056.07
+        },
+        {
+          "name": "LCID",
+          "sectorId": "Automobiles",
+          "logoSrc": "",
+          "marketCap": 40028.51
+        },
+        {
+          "name": "THO",
+          "sectorId": "Automobiles",
+          "logoSrc": "https://finnhub.io/api/logo?symbol=THO",
+          "marketCap": 6062.604
+        },
+        {
+          "name": "FSR",
+          "sectorId": "Automobiles",
+          "logoSrc": "",
+          "marketCap": 4337.853
+        },
+        {
+          "name": "FFIE",
+          "sectorId": "Automobiles",
+          "logoSrc": "",
+          "marketCap": 3023.04
+        }
+      ]
+    }
+  ]
+}
