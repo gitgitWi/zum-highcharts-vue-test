@@ -1,52 +1,93 @@
 <template>
   <div id="chart-wrapper">
-    <highcharts :ref="treemap" :options="chartOptions" />
+    <highcharts
+      id="container"
+      :options="chartOptions"
+      :deep-copy-on-update="true"
+    />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import { Highcharts } from "./HighCharts";
-import { getChartOptions } from "./options";
+import usDummy from "$assets/us-dummy.json";
+import { getChartOptions } from "@/components/highcharts/options";
+import { TreemapSector } from "@/types";
+
+const { random, floor } = Math;
 
 export default Vue.extend({
   name: "TreemapChart",
 
-  components: {
-    Highcharts,
-  },
-
   data(): Record<string, unknown> {
     return {
       chartOptions: {},
-      marketData: {},
     };
   },
 
-  mounted(): void {
-    this.cronFetchChartData();
+  async mounted(): Promise<void> {
+    this.loadChartData();
   },
 
   methods: {
-    getChartOptions,
-
     async loadChartData(): Promise<void> {
-      console.info(`__loadChartData__`);
-      // this.chartOptions = this.getChartOptions([]);
+      const data = this._refiner(usDummy.sectors as TreemapSector[]);
+      this.chartOptions = getChartOptions(data);
     },
 
-    cronFetchChartData(): void {
-      setTimeout(this.loadChartData, 15_000);
+    /**
+     * @description
+     * value: 각 영역의 크기
+     * colorValue: 각 영역의 색상값
+     * parent: treemap의 parent id
+     */
+    _refiner(sectors: TreemapSector[]): Record<string, string | number>[] {
+      const points = [] as Record<string, string | number>[];
+
+      sectors.forEach(({ name: sectorName, stocks }, sectorId) => {
+        const value = stocks.reduce(
+          (acc, { name: stockName, marketCap }, stockId) => {
+            const gains = floor(random() * 100) * (random() < 0.5 ? -1 : +1);
+            const gainsColor =
+              gains > 0 ? "blue" : gains === 0 ? "grey" : "red";
+            points.push({
+              id: `${sectorId}_${stockId}`,
+              name: `<span>${stockName}</span><br /><span style="color: ${gainsColor}; text-shadow: 0 0 3px grey; font-size: 0.8em">${gains.toLocaleString()}%</span>`,
+              value: marketCap,
+              parent: `${sectorId}`,
+              colorValue: gains,
+            });
+            return (acc += marketCap);
+          },
+          0
+        );
+
+        points.push({
+          id: `${sectorId}`,
+          value,
+          name: sectorName,
+        });
+      });
+      return points;
     },
   },
 });
 </script>
 
-<style>
+<style scoped>
 #chart-wrapper {
   width: 100%;
   min-width: 600px;
+  max-width: 1800px;
   height: max-content;
-  max-height: 600px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+  display: grid;
+  place-items: center;
+}
+
+#container {
+  width: 100%;
+  max-width: 1600px;
+  height: 900px;
 }
 </style>
