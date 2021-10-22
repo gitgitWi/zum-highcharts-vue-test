@@ -1,9 +1,14 @@
-import { Options } from "@/types";
+import {
+  Options,
+  TooltipFormatterCallbackFunction,
+  TooltipFormatterContextObject,
+} from "@/components/highcharts/types";
+import { FormatterCallbackFunction, Point } from "highcharts";
 
 /**
  * @see {https://api.highcharts.com/highcharts/}
  */
-export const getChartOptions = (data: Record<string, unknown>[]): Options => ({
+export const getChartOptions = (data: any[]): Options => ({
   title: {
     text: "[Title] US Stock Market Map",
   },
@@ -16,6 +21,7 @@ export const getChartOptions = (data: Record<string, unknown>[]): Options => ({
    * @see {https://api.highcharts.com/highcharts/colorAxis}
    */
   chart: {
+    type: "treemap",
     /**
      * @todo
      * CSS 사용해 커스텀하는 경우 true로 변경하고 모든 스타일 직접 지정해야 함
@@ -32,9 +38,17 @@ export const getChartOptions = (data: Record<string, unknown>[]): Options => ({
       type: "treemap",
       layoutAlgorithm: "squarified",
       data,
+
+      animation: {
+        duration: 0,
+      },
       allowTraversingTree: true,
       animationLimit: 300,
       levelIsConstant: false,
+
+      label: {
+        onArea: false,
+      },
 
       levels: [
         {
@@ -44,7 +58,6 @@ export const getChartOptions = (data: Record<string, unknown>[]): Options => ({
             defer: false,
             useHTML: true,
             align: "center",
-            // verticalAlign: "top",
             style: {
               // textOutline: "1px solid black",
               // fontSize: "16px",
@@ -63,14 +76,23 @@ export const getChartOptions = (data: Record<string, unknown>[]): Options => ({
             style: {
               textAlign: "center",
             },
-
-            /** @todo `styledMode: true` 인 경우 사용가능 */
-            // className: 'thumbnail',
           },
           borderWidth: 1,
         },
       ], // levels
-    }, // series.opions
+
+      tooltip: {
+        headerFormat: "name: {point.key}<br />",
+        pointFormat: "market cap: {point.value}<br /> gains: {point.gains}",
+        /** @todo formatter 구현,, */
+        // pointFormatter: function (ctx: TooltipFormatterContextObject) {
+        //   const points = [];
+        //   if (ctx?.point?.value) points.push(`marketCap: ${ctx.point.value}`);
+        //   if (ctx?.point?.gains) points.push(`gains: ${ctx.point.gains}`);
+        //   return points.join(`<br />`);
+        // },
+      }, //tooltip
+    },
   ], // series
 });
 
@@ -104,7 +126,6 @@ export const globalOptions: Options = {
         condition: {
           maxWidth: 1200,
           minHeight: 600,
-          // maxHeight: 500,
         },
         chartOptions: {},
       },
