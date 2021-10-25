@@ -7,8 +7,8 @@
     "email": "wiii@kakao.com"
   },
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "serve": "echo VUE_APP_LAST_BUILD=\"$(date +'%Y-%m-%dT%H:%M:%S')\" >> .env && vue-cli-service serve",
+    "build": "echo VUE_APP_LAST_BUILD=\"$(date +'%Y-%m-%dT%H:%M:%S')\" >> $GITHUB_ENV && vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "main": "index.js",
