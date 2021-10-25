@@ -1,4 +1,8 @@
-import { Options, TreemapStock } from "@/components/highcharts/types";
+import {
+  Options,
+  TreemapSector,
+  TreemapStock,
+} from "@/components/highcharts/types";
 import { borderColor } from "@/components/highcharts/constants";
 
 /**
@@ -54,9 +58,8 @@ export const getChartOptions = (data: any[]): Options => ({
             defer: false,
             useHTML: true,
             align: "center",
-            allowOverlap: true,
+            allowOverlap: false,
             style: {
-              width: 100,
               backgroundColor: borderColor,
               // textOutline: "1px solid black",
               fontSize: "16px",
@@ -67,7 +70,7 @@ export const getChartOptions = (data: any[]): Options => ({
             backgroundColor: borderColor,
           },
           borderColor,
-          borderWidth: 16,
+          borderWidth: 10,
         },
         {
           level: 2,
@@ -81,28 +84,52 @@ export const getChartOptions = (data: any[]): Options => ({
             style: {
               textAlign: "center",
             },
-            formatter: function () {
+            formatter() {
+              const { MAX_SAFE_INTEGER } = Number;
+              const { width = MAX_SAFE_INTEGER, height = MAX_SAFE_INTEGER } =
+                this.point?.shapeArgs;
+              const relativeSize = Math.min(width, height);
+
               const { gains = 0, logoSrc } = this
                 .point as unknown as TreemapStock;
               const gainsColor =
                 gains > 0 ? "blue" : gains === 0 ? "grey" : "red";
               const gainsFixed = gains.toFixed(2);
 
-              return (
-                (logoSrc
-                  ? `<img src="${logoSrc}" loading="lazy" style="width: 70%; border-radius: 50%" ><br/>`
-                  : "") +
-                this.key +
-                `<br /><span style="color: ${gainsColor};">${gainsFixed}%</span>`
+              const infos: string[] = [];
+              if (logoSrc)
+                infos.push(
+                  `<img 
+                    src="${logoSrc}" 
+                    loading="lazy" 
+                    style="
+                      width: ${Math.floor(0.2 * relativeSize)}px; 
+                      border-radius: 50px;
+                      " 
+                    />`
+                );
+
+              infos.push(
+                `<span style="font-weight: bold; font-size: ${
+                  relativeSize * 0.07
+                }px">${this.key}</span>`
               );
+
+              infos.push(
+                `<span style="color: ${gainsColor}; font-size: ${
+                  relativeSize * 0.05
+                }px">${gainsFixed}%</span>`
+              );
+
+              return infos.join(`<br />`);
             },
           },
           borderWidth: 1,
         },
-      ], // levels
+      ], // series.levels
 
       tooltip: {
-        pointFormatter: function () {
+        pointFormatter() {
           const header = `<span style="font-weight: bold; font-style: italic;">${this.name}</span>`;
           const infos: string[] = [header];
 
@@ -112,6 +139,23 @@ export const getChartOptions = (data: any[]): Options => ({
           return infos.join(`<br />`);
         },
       }, // series.tooltip
+
+      point: {
+        events: {
+          click: function () {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            if (!this?.parent as unknown) return;
+            alert(this.name);
+          },
+        },
+      }, // series.point
+
+      traverseUpButton: {
+        position: {
+          // y: -35,
+        },
+      },
     },
   ], // series
 });
