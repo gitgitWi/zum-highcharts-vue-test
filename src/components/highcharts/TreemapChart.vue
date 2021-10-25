@@ -48,20 +48,17 @@ export default Vue.extend({
 
       sectors.forEach(({ name: sectorName, stocks }, sectorId) => {
         const value = stocks.reduce(
-          (acc, { name: stockName, marketCap }, stockId) => {
+          (acc, { name: stockName, marketCap, logoSrc = "" }, stockId) => {
             const gains = random() * 5 * (random() < 0.5 ? -1 : +1);
-            const gainsColor =
-              gains > 0 ? "blue" : gains === 0 ? "grey" : "red";
-            const gainsFixed = gains.toFixed(2);
 
             points.push({
               id: `${sectorId}_${stockId}`,
-              name: `<span>${stockName}</span><br /><span style="color: ${gainsColor}; text-shadow: 0 0 3px grey; font-size: 0.8em">${gainsFixed.toLocaleString()}%</span>`,
-              // name: stockName,
-              value: marketCap,
+              name: stockName,
+              value: +marketCap,
               parent: `${sectorId}`,
               color: getStockColor(gains),
-              gains: `${gainsFixed}%`,
+              gains,
+              logoSrc,
             });
             return (acc += marketCap);
           },

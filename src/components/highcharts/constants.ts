@@ -1,3 +1,5 @@
+export const borderColor = "#CCCCCC";
+
 export const colorMap: ReadonlyMap<number, string> = new Map([
   [3, "#FF4747"],
   [2, "#BD464B"],
