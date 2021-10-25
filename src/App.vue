@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>ZUM 국내/해외증시 MAP 테스트</h1>
+    <header-wrapper />
     <treemap-chart />
     <footer-wrapper />
   </div>
@@ -8,11 +8,12 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { TreemapChart, FooterWrapper } from "./components";
+import { TreemapChart, HeaderWrapper, FooterWrapper } from "./components";
 
 export default Vue.extend({
   name: "App",
   components: {
+    HeaderWrapper,
     TreemapChart,
     FooterWrapper,
   },
