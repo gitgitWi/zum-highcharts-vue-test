@@ -87,6 +87,7 @@ export const getChartOptions = (data: any[]): Options => ({
             formatter() {
               const { MAX_SAFE_INTEGER } = Number;
               const { width = MAX_SAFE_INTEGER, height = MAX_SAFE_INTEGER } =
+                // @ts-ignore
                 this.point?.shapeArgs;
               const relativeSize = Math.min(width, height);
 
@@ -143,7 +144,6 @@ export const getChartOptions = (data: any[]): Options => ({
       point: {
         events: {
           click: function () {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             if (!this?.parent as unknown) return;
             alert(this.name);
