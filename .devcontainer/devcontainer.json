@@ -49,7 +49,5 @@
     "formulahendry.auto-close-tag",
     "formulahendry.auto-rename-tag",
     "mikestead.dotenv"
-  ],
-
-  "postCreateCommand": "source ~/.zshrc"
+  ]
 }

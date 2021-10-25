@@ -1,5 +1,3 @@
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf
-
 # install Nodejs
 asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 asdf install nodejs lts
