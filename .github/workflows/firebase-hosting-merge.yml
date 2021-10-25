@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: echo "VUE_APP_LAST_BUILD::$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV && echo $VUE_APP_LAST_BUILD
+      - run: echo "VUE_APP_LAST_BUILD=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV && echo $VUE_APP_LAST_BUILD
       - run: yarn install --frozen-lockfile && yarn build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
