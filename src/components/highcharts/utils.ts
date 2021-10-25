@@ -1,7 +1,4 @@
-import {
-  SeriesOptionsType,
-  TreemapSector,
-} from "@/components/highcharts/types";
+import { TreemapSector } from "@/components/highcharts/types";
 import { colorMap } from "@/components/highcharts/constants";
 
 const { random, floor, ceil } = Math;
