@@ -1,18 +1,32 @@
 <template>
   <section>
-    <div class="tabs">
-      <span>US(blue-red)</span>
-    </div>
-    <div>
-      <span>US(green-red)</span>
-    </div>
+    <button
+      v-for="({ innerText, dataKey, color }, idx) in tabsDataMap"
+      :key="`category-tab-button-${idx}`"
+      class="tabs"
+      :style="{ backgroundColor: color }"
+      @click="() => $emit(`click-button`, dataKey)"
+    >
+      {{ innerText }}
+    </button>
   </section>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
+
+const tabsDataMap = [
+  { innerText: `US(green-red)`, dataKey: `US-Green`, color: `green` },
+  { innerText: `US(blue-red)`, dataKey: `US-Blue`, color: `blue` },
+];
 export default Vue.extend({
   name: "CategoryTab",
+
+  data() {
+    return {
+      tabsDataMap,
+    };
+  },
 });
 </script>
 
@@ -20,11 +34,24 @@ export default Vue.extend({
 section {
   width: 100%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 
-  .tabs {
-    padding: 0 15px;
+  button {
+    width: 150px;
+    height: 2rem;
+    margin: 15px;
+    border: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    background-color: indianred;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+
+    &:hover {
+      font-size: 1.1rem;
+      transition-duration: 50ms;
+    }
   }
 }
 </style>

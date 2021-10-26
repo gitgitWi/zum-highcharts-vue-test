@@ -5,6 +5,7 @@
       :options="chartOptions"
       :deep-copy-on-update="true"
     />
+    <category-tab @click-button="tabButtonClickHandler" />
   </div>
 </template>
 
@@ -16,10 +17,14 @@ import { TreemapSector } from "@/components/highcharts/types";
 import { getChartOptions } from "@/components/highcharts/options";
 import { getStockColor, refineSectorData } from "@/components/highcharts/utils";
 
+import CategoryTab from "./CategoryTab.vue";
+
 const { random } = Math;
 
 export default Vue.extend({
   name: "TreemapChart",
+
+  components: { CategoryTab },
 
   data(): Record<string, unknown> {
     return {
@@ -72,6 +77,10 @@ export default Vue.extend({
         });
       });
       return points;
+    }, // _fefiner
+
+    tabButtonClickHandler(dataKey: string) {
+      alert(dataKey);
     },
   },
 });
