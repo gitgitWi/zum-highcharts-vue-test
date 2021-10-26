@@ -53,8 +53,8 @@ export const getChartOptions = (data: any[]): Options => ({
       levels: [
         {
           level: 1,
-          // layoutAlgorithm: "squarified",
-          layoutAlgorithm: "sliceAndDice",
+          layoutAlgorithm: "squarified",
+          // layoutAlgorithm: "sliceAndDice",
           layoutStartingDirection: "horizontal",
           dataLabels: {
             enabled: true,
