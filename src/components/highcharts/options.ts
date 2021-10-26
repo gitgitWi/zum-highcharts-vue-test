@@ -1,9 +1,10 @@
-import {
-  Options,
-  TreemapSector,
-  TreemapStock,
-} from "@/components/highcharts/types";
+import { Options, TreemapStock } from "@/components/highcharts/types";
 import { borderColor } from "@/components/highcharts/constants";
+import {
+  getLogoHtml,
+  getStockGainHtml,
+  getStockNameHtml,
+} from "@/components/highcharts/utils";
 
 /**
  * @see {https://api.highcharts.com/highcharts/}
@@ -52,7 +53,9 @@ export const getChartOptions = (data: any[]): Options => ({
       levels: [
         {
           level: 1,
+          // layoutAlgorithm: "squarified",
           layoutAlgorithm: "sliceAndDice",
+          layoutStartingDirection: "horizontal",
           dataLabels: {
             enabled: true,
             crop: false,
@@ -78,6 +81,9 @@ export const getChartOptions = (data: any[]): Options => ({
           level: 2,
           layoutAlgorithm: "squarified",
           // layoutAlgorithm: "sliceAndDice",
+          // layoutAlgorithm: "stripes",
+          // layoutAlgorithm: "strip",
+          layoutStartingDirection: "horizontal",
           dataLabels: {
             enabled: true,
             defer: true,
@@ -88,42 +94,22 @@ export const getChartOptions = (data: any[]): Options => ({
             },
             formatter() {
               const { MAX_SAFE_INTEGER } = Number;
-              const { width = MAX_SAFE_INTEGER, height = MAX_SAFE_INTEGER } =
+
+              const {
+                gains = 0,
+                logoSrc,
                 // @ts-ignore
-                this.point?.shapeArgs;
+                shapeArgs: {
+                  width = MAX_SAFE_INTEGER,
+                  height = MAX_SAFE_INTEGER,
+                },
+              } = this.point as unknown as TreemapStock;
               const relativeSize = Math.min(width, height);
 
-              const { gains = 0, logoSrc } = this
-                .point as unknown as TreemapStock;
-              const gainsColor =
-                gains > 0 ? "blue" : gains === 0 ? "grey" : "red";
-              const gainsFixed = gains.toFixed(2);
-
               const infos: string[] = [];
-              if (logoSrc)
-                infos.push(
-                  `<img 
-                    src="${logoSrc}" 
-                    loading="lazy" 
-                    style="
-                      width: ${Math.floor(0.2 * relativeSize)}px; 
-                      border-radius: 50px;
-                      " 
-                    />`
-                );
-
-              infos.push(
-                `<span style="font-weight: 900; font-size: ${
-                  relativeSize * 0.07
-                }px">${this.key}</span>`
-              );
-
-              infos.push(
-                `<span style="color: ${gainsColor}; font-size: ${
-                  relativeSize * 0.05
-                }px">${gainsFixed}%</span>`
-              );
-
+              if (logoSrc) infos.push(getLogoHtml(logoSrc, relativeSize));
+              infos.push(getStockNameHtml(this.key ?? "", relativeSize));
+              infos.push(getStockGainHtml(gains, relativeSize));
               return infos.join(`<br />`);
             },
           },
