@@ -1,12 +1,12 @@
 import { TreemapSector } from "@/components/highcharts/types";
-import { colorMap } from "@/components/highcharts/constants";
+import { blueColorMap } from "@/components/highcharts/constants";
 
 const { random, floor, ceil } = Math;
 
 export const getStockColor = (gains: number): string => {
   const parseGains =
     gains > 3 ? 3 : gains < -3 ? -3 : gains >= 0 ? floor(gains) : ceil(gains);
-  return colorMap.get(parseGains) as string;
+  return blueColorMap.get(parseGains) as string;
 };
 
 /**

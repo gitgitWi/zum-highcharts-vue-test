@@ -15,10 +15,8 @@
 <script lang="ts">
 import Vue from "vue";
 
-const tabsDataMap = [
-  { innerText: `US(green-red)`, dataKey: `US-Green`, color: `green` },
-  { innerText: `US(blue-red)`, dataKey: `US-Blue`, color: `blue` },
-];
+import { tabsDataMap } from "@/components/highcharts/constants";
+
 export default Vue.extend({
   name: "CategoryTab",
 
