@@ -1,24 +1,30 @@
 <template>
   <div id="chart-wrapper">
+    <category-tab @click-button="tabButtonClickHandler" />
     <highcharts
       id="container"
       :options="chartOptions"
       :deep-copy-on-update="true"
     />
-    <category-tab @click-button="tabButtonClickHandler" />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import usDummy from "$assets/us-dummy.json";
 
 import { TreemapSector } from "@/components/highcharts/types";
+import { colorMapReg, categoryReg } from "@/components/highcharts/constants";
 import { getChartOptions } from "@/components/highcharts/options";
 import { refineSectorData } from "@/components/highcharts/utils";
 
 import CategoryTab from "./CategoryTab.vue";
 import { blueColorMap, greenColorMap } from "./constants";
+
+const dummyDataMap = {
+  us: import("$assets/us-dummy.json").then(({ sectors }) => sectors),
+  kospi: import("$assets/kospi-dummy.json").then(({ sectors }) => sectors),
+  kosdaq: import("$assets/kosdaq-dummy.json").then(({ sectors }) => sectors),
+};
 
 export default Vue.extend({
   name: "TreemapChart",
@@ -33,21 +39,30 @@ export default Vue.extend({
   },
 
   async mounted(): Promise<void> {
-    this.loadChartData();
+    dummyDataMap.us.then((data) => this.loadChartData(data as TreemapSector[]));
   },
 
   methods: {
-    async loadChartData(): Promise<void> {
-      const data = refineSectorData(usDummy.sectors as TreemapSector[], {
+    async loadChartData(apiData: TreemapSector[]): Promise<void> {
+      const data = refineSectorData(apiData, {
         colorMap: this.colorMap,
       });
       this.chartOptions = getChartOptions(data);
     },
 
     tabButtonClickHandler(dataKey: string) {
-      /** @todo */
-      this.colorMap = dataKey.includes("Blue") ? blueColorMap : greenColorMap;
-      this.loadChartData();
+      this.colorMap =
+        dataKey.match(colorMapReg)?.[0].toLowerCase() === "blue"
+          ? blueColorMap
+          : greenColorMap;
+
+      const [category] = dataKey.match(categoryReg) ?? [];
+
+      // @ts-ignore
+      dummyDataMap[category.toLowerCase()]
+        // @ts-ignore
+        ?.then((data) => this.loadChartData(data as TreemapSector[]))
+        .catch(console.error);
     },
   },
 });
