@@ -15,11 +15,10 @@ import usDummy from "$assets/us-dummy.json";
 
 import { TreemapSector } from "@/components/highcharts/types";
 import { getChartOptions } from "@/components/highcharts/options";
-import { getStockColor, refineSectorData } from "@/components/highcharts/utils";
+import { refineSectorData } from "@/components/highcharts/utils";
 
 import CategoryTab from "./CategoryTab.vue";
-
-const { random } = Math;
+import { blueColorMap, greenColorMap } from "./constants";
 
 export default Vue.extend({
   name: "TreemapChart",
@@ -29,6 +28,7 @@ export default Vue.extend({
   data(): Record<string, unknown> {
     return {
       chartOptions: {},
+      colorMap: blueColorMap,
     };
   },
 
@@ -38,49 +38,16 @@ export default Vue.extend({
 
   methods: {
     async loadChartData(): Promise<void> {
-      const data = this._refiner(usDummy.sectors as TreemapSector[]);
+      const data = refineSectorData(usDummy.sectors as TreemapSector[], {
+        colorMap: this.colorMap,
+      });
       this.chartOptions = getChartOptions(data);
     },
 
-    /**
-     * @description
-     * value: 각 영역의 크기
-     * colorValue: 각 영역의 색상값
-     * parent: treemap의 parent id
-     */
-    _refiner(sectors: TreemapSector[]): Record<string, string | number>[] {
-      const points = [] as Record<string, string | number>[];
-
-      sectors.forEach(({ name: sectorName, stocks }, sectorId) => {
-        const value = stocks.reduce(
-          (acc, { name: stockName, marketCap, logoSrc = "" }, stockId) => {
-            const gains = random() * 5 * (random() < 0.5 ? -1 : +1);
-
-            points.push({
-              id: `${sectorId}_${stockId}`,
-              name: stockName,
-              value: +marketCap,
-              parent: `${sectorId}`,
-              color: getStockColor(gains),
-              gains,
-              logoSrc,
-            });
-            return (acc += marketCap);
-          },
-          0
-        );
-
-        points.push({
-          id: `${sectorId}`,
-          value,
-          name: sectorName,
-        });
-      });
-      return points;
-    }, // _fefiner
-
     tabButtonClickHandler(dataKey: string) {
-      alert(dataKey);
+      /** @todo */
+      this.colorMap = dataKey.includes("Blue") ? blueColorMap : greenColorMap;
+      this.loadChartData();
     },
   },
 });

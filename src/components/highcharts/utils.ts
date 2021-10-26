@@ -3,35 +3,54 @@ import { blueColorMap } from "@/components/highcharts/constants";
 
 const { random, floor, ceil } = Math;
 
-export const getStockColor = (gains: number): string => {
+export const getStockColor = (
+  gains: number,
+  colorMap = blueColorMap
+): string => {
   const parseGains =
     gains > 3 ? 3 : gains < -3 ? -3 : gains >= 0 ? floor(gains) : ceil(gains);
-  return blueColorMap.get(parseGains) as string;
+  return colorMap.get(parseGains) as string;
 };
 
 /**
- * @todo TreemapChart 컴포넌트 내부 메서드 추출
  * API 데이터를 treemap chart에 맞게 정제
  * @returns 섹터별 데이터 배열로 분리
  */
 
 export const refineSectorData = (
-  sectors: TreemapSector[]
-): [string, unknown[]][] =>
-  sectors.map(({ name: sectorName, stocks }, sectorId) => [
-    sectorName,
-    stocks.map(({ name: stockName, marketCap }, stockId) => {
-      const gains = random() * 5 * (random() < 0.5 ? -1 : 1);
+  sectors: TreemapSector[],
+  { colorMap = blueColorMap }: Record<string, unknown>
+): Record<string, string | number>[] => {
+  const points = [] as Record<string, string | number>[];
 
-      return {
-        parent: `${sectorId}-${stockId}`,
-        name: stockName,
-        value: marketCap,
-        color: getStockColor(gains),
-        gains,
-      };
-    }),
-  ]);
+  sectors.forEach(({ name: sectorName, stocks }, sectorId) => {
+    const value = stocks.reduce(
+      (acc, { name: stockName, marketCap, logoSrc = "" }, stockId) => {
+        /** @todo API에서 받아오는 것으로 수정 필요 */
+        const gains = random() * 5 * (random() < 0.5 ? -1 : +1);
+
+        points.push({
+          id: `${sectorId}_${stockId}`,
+          name: stockName,
+          value: +marketCap,
+          parent: `${sectorId}`,
+          color: getStockColor(gains, colorMap as ReadonlyMap<number, string>),
+          gains,
+          logoSrc,
+        });
+        return (acc += marketCap);
+      },
+      0
+    );
+
+    points.push({
+      id: `${sectorId}`,
+      value,
+      name: sectorName,
+    });
+  });
+  return points;
+};
 
 export const getRelativeSize = (pointSize: number, ratio = 0.2): number => {
   return floor(ratio * pointSize);
@@ -41,7 +60,8 @@ export const getLogoHtml = (logoSrc: string, pointSize: number): string => {
   const size = getRelativeSize(pointSize, 0.2);
 
   return `
-  <div style="
+  <div 
+    style="
       display: flex;
       justify-content: center;
       align-items: center;
