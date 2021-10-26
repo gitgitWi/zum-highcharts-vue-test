@@ -1,16 +1,27 @@
 import { TreemapSector } from "@/components/highcharts/types";
-import { blueColorMap } from "@/components/highcharts/constants";
+import {
+  colorMapReg,
+  krBlueColorMap,
+  usBlueColorMap,
+  usGreenColorMap,
+} from "@/components/highcharts/constants";
 
 const { random, floor, ceil } = Math;
 
-export const getStockColor = (
-  gains: number,
-  colorMap = blueColorMap
-): string => {
-  const parseGains =
-    gains > 3 ? 3 : gains < -3 ? -3 : gains >= 0 ? floor(gains) : ceil(gains);
-  return colorMap.get(parseGains) as string;
-};
+const getColorMap = (dataKey: string): ReadonlyMap<number, string> =>
+  dataKey.toLowerCase().includes("ko")
+    ? krBlueColorMap
+    : dataKey.match(colorMapReg)?.[0].toLowerCase() === "blue"
+    ? usBlueColorMap
+    : usGreenColorMap;
+
+export const getStockColor =
+  (colorMap = usBlueColorMap) =>
+  (gains: number): string => {
+    const parseGains =
+      gains > 3 ? 3 : gains < -3 ? -3 : gains >= 0 ? floor(gains) : ceil(gains);
+    return colorMap.get(parseGains) as string;
+  };
 
 /**
  * API 데이터를 treemap chart에 맞게 정제
@@ -19,11 +30,12 @@ export const getStockColor = (
 
 export const refineSectorData = (
   sectors: TreemapSector[],
-  { colorMap = blueColorMap }: Record<string, unknown>
+  { dataKey = `US-Green` }: Record<string, string>
 ): Record<string, string | number>[] => {
   const points = [] as Record<string, string | number>[];
+  const getColorByMap = getStockColor(getColorMap(dataKey));
 
-  sectors.forEach(({ name: sectorName, stocks }, sectorId) => {
+  sectors?.forEach(({ name: sectorName, stocks }, sectorId) => {
     const value = stocks.reduce(
       (acc, { name: stockName, marketCap, logoSrc = "" }, stockId) => {
         /** @todo API에서 받아오는 것으로 수정 필요 */
@@ -34,7 +46,7 @@ export const refineSectorData = (
           name: stockName,
           value: +marketCap,
           parent: `${sectorId}`,
-          color: getStockColor(gains, colorMap as ReadonlyMap<number, string>),
+          color: getColorByMap(gains),
           gains,
           logoSrc,
         });

@@ -1,6 +1,9 @@
 <template>
   <div id="chart-wrapper">
-    <category-tab @click-button="tabButtonClickHandler" />
+    <category-tab
+      :current-category.sync="currentDataKey"
+      @click-button="tabButtonClickHandler"
+    />
     <highcharts
       id="container"
       :options="chartOptions"
@@ -13,12 +16,11 @@
 import Vue from "vue";
 
 import { TreemapSector } from "@/components/highcharts/types";
-import { colorMapReg, categoryReg } from "@/components/highcharts/constants";
+import { categoryReg } from "@/components/highcharts/constants";
 import { getChartOptions } from "@/components/highcharts/options";
 import { refineSectorData } from "@/components/highcharts/utils";
 
 import CategoryTab from "./CategoryTab.vue";
-import { blueColorMap, greenColorMap } from "./constants";
 
 const dummyDataMap = {
   us: import("$assets/us-dummy.json").then(({ sectors }) => sectors),
@@ -34,35 +36,29 @@ export default Vue.extend({
   data(): Record<string, unknown> {
     return {
       chartOptions: {},
-      colorMap: blueColorMap,
+      currentDataKey: `US-Green`,
     };
   },
 
-  async mounted(): Promise<void> {
-    dummyDataMap.us.then((data) => this.loadChartData(data as TreemapSector[]));
+  mounted() {
+    this.loadChartData();
   },
 
   methods: {
-    async loadChartData(apiData: TreemapSector[]): Promise<void> {
-      const data = refineSectorData(apiData, {
-        colorMap: this.colorMap,
-      });
+    async loadChartData(): Promise<void> {
+      const dataKey = this.currentDataKey as string;
+      const category = (dataKey.match(categoryReg) ?? [`us`])[0].toLowerCase();
+
+      // @ts-ignore
+      const apiData = await dummyDataMap[category];
+
+      const data = refineSectorData(apiData, { dataKey });
       this.chartOptions = getChartOptions(data);
     },
 
     tabButtonClickHandler(dataKey: string) {
-      this.colorMap =
-        dataKey.match(colorMapReg)?.[0].toLowerCase() === "blue"
-          ? blueColorMap
-          : greenColorMap;
-
-      const [category] = dataKey.match(categoryReg) ?? [];
-
-      // @ts-ignore
-      dummyDataMap[category.toLowerCase()]
-        // @ts-ignore
-        ?.then((data) => this.loadChartData(data as TreemapSector[]))
-        .catch(console.error);
+      this.currentDataKey = dataKey;
+      this.loadChartData();
     },
   },
 });

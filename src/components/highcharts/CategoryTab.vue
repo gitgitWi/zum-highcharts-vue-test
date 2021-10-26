@@ -9,7 +9,7 @@
         :id="dataKey"
         type="radio"
         name="tab-select"
-        :checked="idx === 2"
+        :checked="dataKey.includes(currentCategory)"
       />
       <label :for="dataKey" @click="() => $emit(`click-button`, dataKey)">
         {{ innerText }}
@@ -25,6 +25,10 @@ import { tabsDataMap } from "@/components/highcharts/constants";
 
 export default Vue.extend({
   name: "CategoryTab",
+
+  props: {
+    currentCategory: { type: String, required: true },
+  },
 
   data() {
     return {
@@ -52,7 +56,6 @@ section {
     text-shadow: 0 0 2px whitesmoke;
     font-size: 1rem;
     font-weight: 300;
-    cursor: pointer;
 
     &:hover {
       font-size: 1.1rem;
@@ -70,21 +73,36 @@ section {
       }
     }
 
-    &.green-red {
+    &,
+    input,
+    label {
+      cursor: pointer;
+    }
+
+    &.red-blue {
       background: linear-gradient(
         90deg,
         rgba(246, 53, 56, 1) 0%,
-        rgba(64, 69, 84, 1) 50%,
-        rgba(50, 204, 90, 1) 100%
+        rgba(65, 69, 84, 1) 50%,
+        rgba(58, 127, 255, 1) 100%
+      );
+    }
+
+    &.green-red {
+      background: linear-gradient(
+        90deg,
+        rgba(50, 204, 90, 1) 0%,
+        rgba(246, 53, 56, 1) 100%,
+        rgba(64, 69, 84, 1) 50%
       );
     }
 
     &.blue-red {
       background: linear-gradient(
         90deg,
-        rgba(246, 53, 56, 1) 0%,
+        rgba(58, 127, 255, 1) 0%,
         rgba(65, 69, 84, 1) 50%,
-        rgba(58, 127, 255, 1) 100%
+        rgba(246, 53, 56, 1) 100%
       );
     }
   }
