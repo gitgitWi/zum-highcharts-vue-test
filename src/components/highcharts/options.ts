@@ -55,17 +55,19 @@ export const getChartOptions = (data: any[]): Options => ({
           layoutAlgorithm: "sliceAndDice",
           dataLabels: {
             enabled: true,
+            crop: false,
             defer: false,
             useHTML: true,
-            align: "center",
+            align: "left",
             allowOverlap: false,
             style: {
               backgroundColor: borderColor,
-              // textOutline: "1px solid black",
               fontSize: "16px",
-              fontWeight: "bolder",
+              fontWeight: "900",
               textOverflow: "ellipsis",
             },
+            inside: false,
+            padding: 5,
             verticalAlign: "top",
             backgroundColor: borderColor,
           },
@@ -111,7 +113,7 @@ export const getChartOptions = (data: any[]): Options => ({
                 );
 
               infos.push(
-                `<span style="font-weight: bold; font-size: ${
+                `<span style="font-weight: 900; font-size: ${
                   relativeSize * 0.07
                 }px">${this.key}</span>`
               );
@@ -130,6 +132,7 @@ export const getChartOptions = (data: any[]): Options => ({
       ], // series.levels
 
       tooltip: {
+        followPointer: true,
         pointFormatter() {
           const header = `<span style="font-weight: bold; font-style: italic;">${this.name}</span>`;
           const infos: string[] = [header];
@@ -143,7 +146,7 @@ export const getChartOptions = (data: any[]): Options => ({
 
       point: {
         events: {
-          click: function () {
+          click() {
             // @ts-ignore
             if (!this?.parent as unknown) return;
             alert(this.name);
@@ -158,6 +161,12 @@ export const getChartOptions = (data: any[]): Options => ({
       },
     },
   ], // series
+
+  plotOptions: {
+    series: {
+      cursor: "pointer",
+    },
+  },
 });
 
 export const globalOptions: Options = {
