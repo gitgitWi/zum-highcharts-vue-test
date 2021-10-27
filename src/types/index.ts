@@ -1,1 +1,1 @@
-export { VueType } from "./common";
+export { VueType, UnknownObject, KrDummyStock } from "./common";
