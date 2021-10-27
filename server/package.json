@@ -1,0 +1,17 @@
+{
+  "name": "zum-highchats-vue-test-server",
+  "description": "Data Scraper for generating dummy data",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "license": "MIT",
+  "scripts": {
+    "serve": "nodemon --watch '*.ts' --exec ts-node ./index.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.6",
+    "axios": "^0.24.0",
+    "nodemon": "^2.0.14",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.4.4"
+  }
+}
