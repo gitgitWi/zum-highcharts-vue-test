@@ -88,6 +88,7 @@ export class ZumFetcher extends Fetcher {
                   currentPrice,
                   marketCap,
                   priceChange,
+                  rateOfChange,
                 },
               },
               additionalInfo: {
@@ -100,6 +101,7 @@ export class ZumFetcher extends Fetcher {
               currentPrice,
               marketCap,
               priceChange,
+              rateOfChange,
               sector: { id: sectorId, name: sectorName },
             })
           )

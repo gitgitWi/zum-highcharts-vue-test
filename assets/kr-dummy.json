@@ -8,6 +8,7 @@
       "currentPrice": 70100,
       "marketCap": 424451539305000,
       "priceChange": -1000,
+      "rateOfChange": -1.41,
       "sector": { "id": 9, "name": "전기,전자" }
     },
     {
@@ -15,9 +16,10 @@
       "stockCode": "000660",
       "stockName": "SK하이닉스",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/000660.png",
-      "currentPrice": 102000,
+      "currentPrice": 101500,
       "marketCap": 74256241230000,
-      "priceChange": 0,
+      "priceChange": -500,
+      "rateOfChange": -0.49,
       "sector": { "id": 9, "name": "전기,전자" }
     },
     {
@@ -25,9 +27,10 @@
       "stockCode": "006400",
       "stockName": "삼성SDI",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/006400.png",
-      "currentPrice": 749000,
+      "currentPrice": 750000,
       "marketCap": 51298339380000,
-      "priceChange": 3000,
+      "priceChange": 4000,
+      "rateOfChange": 0.54,
       "sector": { "id": 9, "name": "전기,전자" }
     },
     {
@@ -38,6 +41,7 @@
       "currentPrice": 18500,
       "marketCap": 6637481235000,
       "priceChange": -50,
+      "rateOfChange": -0.27,
       "sector": { "id": 9, "name": "전기,전자" }
     },
     {
@@ -48,6 +52,7 @@
       "currentPrice": 104500,
       "marketCap": 4841637675000,
       "priceChange": -500,
+      "rateOfChange": -0.48,
       "sector": { "id": 9, "name": "전기,전자" }
     },
     {
@@ -58,6 +63,7 @@
       "currentPrice": 62000,
       "marketCap": 29408704670300,
       "priceChange": 100,
+      "rateOfChange": 0.16,
       "sector": { "id": 18, "name": "은행" }
     },
     {
@@ -68,6 +74,7 @@
       "currentPrice": 58600,
       "marketCap": 24574248072000,
       "priceChange": -500,
+      "rateOfChange": -0.85,
       "sector": { "id": 17, "name": "금융업" }
     },
     {
@@ -78,6 +85,7 @@
       "currentPrice": 69800,
       "marketCap": 14140000000000,
       "priceChange": -900,
+      "rateOfChange": -1.27,
       "sector": { "id": 20, "name": "보험" }
     },
     {
@@ -85,9 +93,10 @@
       "stockCode": "006800",
       "stockName": "미래에셋증권",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/006800.png",
-      "currentPrice": 8850,
+      "currentPrice": 8860,
       "marketCap": 5705141343840,
-      "priceChange": -130,
+      "priceChange": -120,
+      "rateOfChange": -1.34,
       "sector": { "id": 19, "name": "증권" }
     },
     {
@@ -98,6 +107,7 @@
       "currentPrice": 414500,
       "marketCap": 67758650437500,
       "priceChange": 2000,
+      "rateOfChange": 0.48,
       "sector": { "id": 21, "name": "서비스업" }
     },
     {
@@ -105,9 +115,10 @@
       "stockCode": "035720",
       "stockName": "카카오",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/035720.png",
-      "currentPrice": 128000,
+      "currentPrice": 128500,
       "marketCap": 56783568300000,
-      "priceChange": 500,
+      "priceChange": 1000,
+      "rateOfChange": 0.78,
       "sector": { "id": 21, "name": "서비스업" }
     },
     {
@@ -118,6 +129,7 @@
       "currentPrice": 489500,
       "marketCap": 24380359410000,
       "priceChange": -8500,
+      "rateOfChange": -1.71,
       "sector": { "id": 21, "name": "서비스업" }
     },
     {
@@ -125,9 +137,10 @@
       "stockCode": "036570",
       "stockName": "엔씨소프트",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/036570.png",
-      "currentPrice": 638000,
+      "currentPrice": 639000,
       "marketCap": 13765171794000,
-      "priceChange": 11000,
+      "priceChange": 12000,
+      "rateOfChange": 1.91,
       "sector": { "id": 21, "name": "서비스업" }
     },
     {
@@ -135,9 +148,10 @@
       "stockCode": "326030",
       "stockName": "SK바이오팜",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/326030.png",
-      "currentPrice": 99200,
+      "currentPrice": 99100,
       "marketCap": 7870481625000,
-      "priceChange": -1300,
+      "priceChange": -1400,
+      "rateOfChange": -1.39,
       "sector": { "id": 21, "name": "서비스업" }
     },
     {
@@ -145,9 +159,10 @@
       "stockCode": "051910",
       "stockName": "LG화학",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/051910.png",
-      "currentPrice": 826000,
+      "currentPrice": 825000,
       "marketCap": 58591644690000,
-      "priceChange": -4000,
+      "priceChange": -5000,
+      "rateOfChange": -0.6,
       "sector": { "id": 4, "name": "화학" }
     },
     {
@@ -158,6 +173,7 @@
       "currentPrice": 251000,
       "marketCap": 23763649948000,
       "priceChange": -6000,
+      "rateOfChange": -2.33,
       "sector": { "id": 4, "name": "화학" }
     },
     {
@@ -165,9 +181,10 @@
       "stockCode": "051900",
       "stockName": "LG생활건강",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/051900.png",
-      "currentPrice": 1220000,
+      "currentPrice": 1221000,
       "marketCap": 20787820207000,
-      "priceChange": -111000,
+      "priceChange": -110000,
+      "rateOfChange": -8.26,
       "sector": { "id": 4, "name": "화학" }
     },
     {
@@ -178,6 +195,7 @@
       "currentPrice": 22900,
       "marketCap": 14733075567150,
       "priceChange": -50,
+      "rateOfChange": -0.22,
       "sector": { "id": 13, "name": "전기가스업" }
     },
     {
@@ -185,9 +203,10 @@
       "stockCode": "010950",
       "stockName": "S-Oil",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/010950.png",
-      "currentPrice": 107000,
+      "currentPrice": 106500,
       "marketCap": 11877484556000,
-      "priceChange": 1500,
+      "priceChange": 1000,
+      "rateOfChange": 0.95,
       "sector": { "id": 4, "name": "화학" }
     },
     {
@@ -198,6 +217,7 @@
       "currentPrice": 213500,
       "marketCap": 45618157924500,
       "priceChange": 0,
+      "rateOfChange": 0,
       "sector": { "id": 11, "name": "운수장비" }
     },
     {
@@ -205,9 +225,10 @@
       "stockCode": "000270",
       "stockName": "기아",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/000270.png",
-      "currentPrice": 85300,
+      "currentPrice": 85000,
       "marketCap": 34374811825600,
-      "priceChange": 500,
+      "priceChange": 200,
+      "rateOfChange": 0.24,
       "sector": { "id": 11, "name": "운수장비" }
     },
     {
@@ -218,6 +239,7 @@
       "currentPrice": 30800,
       "marketCap": 10904182863750,
       "priceChange": -550,
+      "rateOfChange": -1.75,
       "sector": { "id": 15, "name": "운수창고" }
     },
     {
@@ -225,9 +247,10 @@
       "stockCode": "009540",
       "stockName": "한국조선해양",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/009540.png",
-      "currentPrice": 105000,
+      "currentPrice": 104500,
       "marketCap": 7360404064000,
-      "priceChange": 1000,
+      "priceChange": 500,
+      "rateOfChange": 0.48,
       "sector": { "id": 11, "name": "운수장비" }
     },
     {
@@ -235,9 +258,10 @@
       "stockCode": "207940",
       "stockName": "삼성바이오로직스",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/207940.png",
-      "currentPrice": 896000,
+      "currentPrice": 898000,
       "marketCap": 58159035000000,
-      "priceChange": 17000,
+      "priceChange": 19000,
+      "rateOfChange": 2.16,
       "sector": { "id": 5, "name": "의약품" }
     },
     {
@@ -248,6 +272,7 @@
       "currentPrice": 219000,
       "marketCap": 30690474310000,
       "priceChange": -3500,
+      "rateOfChange": -1.57,
       "sector": { "id": 5, "name": "의약품" }
     },
     {
@@ -255,9 +280,10 @@
       "stockCode": "302440",
       "stockName": "SK바이오사이언스",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/302440.png",
-      "currentPrice": 227500,
+      "currentPrice": 229000,
       "marketCap": 17365500000000,
-      "priceChange": 500,
+      "priceChange": 2000,
+      "rateOfChange": 0.88,
       "sector": { "id": 5, "name": "의약품" }
     },
     {
@@ -268,6 +294,7 @@
       "currentPrice": 45650,
       "marketCap": 4709173696800,
       "priceChange": 50,
+      "rateOfChange": 0.11,
       "sector": { "id": 10, "name": "의료정밀" }
     },
     {
@@ -275,9 +302,10 @@
       "stockCode": "128940",
       "stockName": "한미약품",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/128940.png",
-      "currentPrice": 272500,
+      "currentPrice": 273000,
       "marketCap": 3339644973000,
-      "priceChange": -4000,
+      "priceChange": -3500,
+      "rateOfChange": -1.27,
       "sector": { "id": 5, "name": "의약품" }
     },
     {
@@ -285,9 +313,10 @@
       "stockCode": "005490",
       "stockName": "POSCO",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/005490.png",
-      "currentPrice": 308500,
+      "currentPrice": 308000,
       "marketCap": 27463853025000,
-      "priceChange": -6500,
+      "priceChange": -7000,
+      "rateOfChange": -2.22,
       "sector": { "id": 7, "name": "철강및금속" }
     },
     {
@@ -295,9 +324,10 @@
       "stockCode": "004020",
       "stockName": "현대제철",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/004020.png",
-      "currentPrice": 45500,
+      "currentPrice": 45700,
       "marketCap": 6165195267000,
-      "priceChange": -700,
+      "priceChange": -500,
+      "rateOfChange": -1.08,
       "sector": { "id": 7, "name": "철강및금속" }
     },
     {
@@ -308,6 +338,7 @@
       "currentPrice": 149000,
       "marketCap": 11658214610000,
       "priceChange": -1500,
+      "rateOfChange": -1,
       "sector": { "id": 6, "name": "비금속광물" }
     },
     {
@@ -315,9 +346,10 @@
       "stockCode": "028260",
       "stockName": "삼성물산",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/028260.png",
-      "currentPrice": 120000,
+      "currentPrice": 120500,
       "marketCap": 22706780341500,
-      "priceChange": -1500,
+      "priceChange": -1000,
+      "rateOfChange": -0.82,
       "sector": { "id": 12, "name": "유통업" }
     },
     {
@@ -328,6 +360,7 @@
       "currentPrice": 168000,
       "marketCap": 4780702958500,
       "priceChange": -3500,
+      "rateOfChange": -2.04,
       "sector": { "id": 12, "name": "유통업" }
     },
     {
@@ -335,9 +368,10 @@
       "stockCode": "008770",
       "stockName": "호텔신라",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/008770.png",
-      "currentPrice": 89200,
+      "currentPrice": 89100,
       "marketCap": 3583353447300,
-      "priceChange": -2100,
+      "priceChange": -2200,
+      "rateOfChange": -2.41,
       "sector": { "id": 12, "name": "유통업" }
     },
     {
@@ -345,9 +379,10 @@
       "stockCode": "034020",
       "stockName": "두산중공업",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/034020.png",
-      "currentPrice": 25750,
+      "currentPrice": 25700,
       "marketCap": 13538215742400,
-      "priceChange": -350,
+      "priceChange": -400,
+      "rateOfChange": -1.53,
       "sector": { "id": 8, "name": "기계" }
     },
     {
@@ -355,9 +390,10 @@
       "stockCode": "068760",
       "stockName": "셀트리온제약",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/068760.png",
-      "currentPrice": 122000,
+      "currentPrice": 121800,
       "marketCap": 4553944719800,
-      "priceChange": -2600,
+      "priceChange": -2800,
+      "rateOfChange": -2.25,
       "sector": { "id": 65, "name": "제약" }
     },
     {
@@ -365,9 +401,10 @@
       "stockCode": "145020",
       "stockName": "휴젤",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/145020.png",
-      "currentPrice": 186600,
+      "currentPrice": 186400,
       "marketCap": 2313554811500,
-      "priceChange": 1300,
+      "priceChange": 1100,
+      "rateOfChange": 0.59,
       "sector": { "id": 65, "name": "제약" }
     },
     {
@@ -375,9 +412,10 @@
       "stockCode": "096530",
       "stockName": "씨젠",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/096530.png",
-      "currentPrice": 54100,
+      "currentPrice": 54000,
       "marketCap": 2778422880800,
-      "priceChange": 900,
+      "priceChange": 800,
+      "rateOfChange": 1.5,
       "sector": { "id": 65, "name": "제약" }
     },
     {
@@ -385,9 +423,10 @@
       "stockCode": "064550",
       "stockName": "바이오니아",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/064550.png",
-      "currentPrice": 54100,
+      "currentPrice": 54000,
       "marketCap": 1394200318700,
-      "priceChange": -1200,
+      "priceChange": -1300,
+      "rateOfChange": -2.35,
       "sector": { "id": 65, "name": "제약" }
     },
     {
@@ -395,9 +434,10 @@
       "stockCode": "048260",
       "stockName": "오스템임플란트",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/048260.png",
-      "currentPrice": 133300,
+      "currentPrice": 133000,
       "marketCap": 1915714649700,
-      "priceChange": -800,
+      "priceChange": -1100,
+      "rateOfChange": -0.82,
       "sector": { "id": 70, "name": "의료·정밀기기" }
     },
     {
@@ -405,9 +445,10 @@
       "stockCode": "247540",
       "stockName": "에코프로비엠",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/247540.png",
-      "currentPrice": 414700,
+      "currentPrice": 413000,
       "marketCap": 9074658924000,
-      "priceChange": 700,
+      "priceChange": -1000,
+      "rateOfChange": -0.24,
       "sector": { "id": 69, "name": "일반전기전자" }
     },
     {
@@ -415,9 +456,10 @@
       "stockCode": "036490",
       "stockName": "SK머티리얼즈",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/036490.png",
-      "currentPrice": 392500,
+      "currentPrice": 392800,
       "marketCap": 4192700017500,
-      "priceChange": -5000,
+      "priceChange": -4700,
+      "rateOfChange": -1.18,
       "sector": { "id": 113, "name": "반도체" }
     },
     {
@@ -425,9 +467,10 @@
       "stockCode": "058470",
       "stockName": "리노공업",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/058470.png",
-      "currentPrice": 171100,
+      "currentPrice": 170900,
       "marketCap": 2632357299000,
-      "priceChange": -1600,
+      "priceChange": -1800,
+      "rateOfChange": -1.04,
       "sector": { "id": 113, "name": "반도체" }
     },
     {
@@ -435,9 +478,10 @@
       "stockCode": "240810",
       "stockName": "원익IPS",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/240810.png",
-      "currentPrice": 39450,
+      "currentPrice": 39400,
       "marketCap": 1958447649900,
-      "priceChange": -450,
+      "priceChange": -500,
+      "rateOfChange": -1.25,
       "sector": { "id": 113, "name": "반도체" }
     },
     {
@@ -445,9 +489,10 @@
       "stockCode": "108320",
       "stockName": "LX세미콘",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/108320.png",
-      "currentPrice": 104900,
+      "currentPrice": 105000,
       "marketCap": 1673596470000,
-      "priceChange": 2000,
+      "priceChange": 2100,
+      "rateOfChange": 2.04,
       "sector": { "id": 113, "name": "반도체" }
     },
     {
@@ -455,9 +500,10 @@
       "stockCode": "066970",
       "stockName": "엘앤에프",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/066970.png",
-      "currentPrice": 186200,
+      "currentPrice": 186500,
       "marketCap": 6502557315200,
-      "priceChange": -600,
+      "priceChange": -300,
+      "rateOfChange": -0.16,
       "sector": { "id": 114, "name": "IT부품" }
     },
     {
@@ -465,9 +511,10 @@
       "stockCode": "086520",
       "stockName": "에코프로",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/086520.png",
-      "currentPrice": 95900,
+      "currentPrice": 95500,
       "marketCap": 1787852597200,
-      "priceChange": 300,
+      "priceChange": -100,
+      "rateOfChange": -0.1,
       "sector": { "id": 114, "name": "IT부품" }
     },
     {
@@ -475,9 +522,10 @@
       "stockCode": "067160",
       "stockName": "아프리카TV",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/067160.png",
-      "currentPrice": 176200,
+      "currentPrice": 176500,
       "marketCap": 1979398877400,
-      "priceChange": 4000,
+      "priceChange": 4300,
+      "rateOfChange": 2.5,
       "sector": { "id": 109, "name": "소프트웨어" }
     },
     {
@@ -485,9 +533,10 @@
       "stockCode": "196170",
       "stockName": "알테오젠",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/196170.png",
-      "currentPrice": 72700,
+      "currentPrice": 72500,
       "marketCap": 3144460200000,
-      "priceChange": -1700,
+      "priceChange": -1900,
+      "rateOfChange": -2.55,
       "sector": { "id": 91, "name": "연구·개발" }
     },
     {
@@ -495,9 +544,10 @@
       "stockCode": "095700",
       "stockName": "제넥신",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/095700.png",
-      "currentPrice": 70000,
+      "currentPrice": 69700,
       "marketCap": 1764511506000,
-      "priceChange": -500,
+      "priceChange": -800,
+      "rateOfChange": -1.13,
       "sector": { "id": 91, "name": "연구·개발" }
     },
     {
@@ -508,6 +558,7 @@
       "currentPrice": 12100,
       "marketCap": 1244692212500,
       "priceChange": 0,
+      "rateOfChange": 0,
       "sector": { "id": 91, "name": "연구·개발" }
     },
     {
@@ -515,9 +566,10 @@
       "stockCode": "091990",
       "stockName": "셀트리온헬스케어",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/091990.png",
-      "currentPrice": 88600,
+      "currentPrice": 88500,
       "marketCap": 13889717542400,
-      "priceChange": -1000,
+      "priceChange": -1100,
+      "rateOfChange": -1.23,
       "sector": { "id": 79, "name": "도매" }
     },
     {
@@ -525,9 +577,10 @@
       "stockCode": "035080",
       "stockName": "인터파크",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/035080.png",
-      "currentPrice": 6740,
+      "currentPrice": 6750,
       "marketCap": 546403066990,
-      "priceChange": 10,
+      "priceChange": 20,
+      "rateOfChange": 0.3,
       "sector": { "id": 80, "name": "소매" }
     },
     {
@@ -535,9 +588,10 @@
       "stockCode": "263750",
       "stockName": "펄어비스",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/263750.png",
-      "currentPrice": 114900,
+      "currentPrice": 114800,
       "marketCap": 7310853600000,
-      "priceChange": 4500,
+      "priceChange": 4400,
+      "rateOfChange": 3.99,
       "sector": { "id": 108, "name": "디지털컨텐츠" }
     },
     {
@@ -545,9 +599,10 @@
       "stockCode": "293490",
       "stockName": "카카오게임즈",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/293490.png",
-      "currentPrice": 80200,
+      "currentPrice": 80100,
       "marketCap": 5616529704000,
-      "priceChange": 5000,
+      "priceChange": 4900,
+      "rateOfChange": 6.52,
       "sector": { "id": 108, "name": "디지털컨텐츠" }
     },
     {
@@ -555,9 +610,10 @@
       "stockCode": "194480",
       "stockName": "데브시스터즈",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/194480.png",
-      "currentPrice": 130100,
+      "currentPrice": 131000,
       "marketCap": 1452798320000,
-      "priceChange": 3300,
+      "priceChange": 4200,
+      "rateOfChange": 3.31,
       "sector": { "id": 108, "name": "디지털컨텐츠" }
     },
     {
@@ -568,6 +624,7 @@
       "currentPrice": 29450,
       "marketCap": 676862806100,
       "priceChange": -1100,
+      "rateOfChange": -3.6,
       "sector": { "id": 107, "name": "인터넷" }
     },
     {
@@ -575,9 +632,10 @@
       "stockCode": "098460",
       "stockName": "고영",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/098460.png",
-      "currentPrice": 19100,
+      "currentPrice": 19050,
       "marketCap": 1338767722500,
-      "priceChange": -400,
+      "priceChange": -450,
+      "rateOfChange": -2.31,
       "sector": { "id": 68, "name": "기계·장비" }
     },
     {
@@ -585,9 +643,10 @@
       "stockCode": "056190",
       "stockName": "에스에프에이",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/056190.png",
-      "currentPrice": 35450,
+      "currentPrice": 35300,
       "marketCap": 1299897112000,
-      "priceChange": -750,
+      "priceChange": -900,
+      "rateOfChange": -2.49,
       "sector": { "id": 68, "name": "기계·장비" }
     },
     {
@@ -598,6 +657,7 @@
       "currentPrice": 18050,
       "marketCap": 1008978913800,
       "priceChange": 500,
+      "rateOfChange": 2.85,
       "sector": { "id": 68, "name": "기계·장비" }
     },
     {
@@ -605,9 +665,10 @@
       "stockCode": "278280",
       "stockName": "천보",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/278280.png",
-      "currentPrice": 284500,
+      "currentPrice": 285100,
       "marketCap": 2920000000000,
-      "priceChange": -7500,
+      "priceChange": -6900,
+      "rateOfChange": -2.36,
       "sector": { "id": 64, "name": "화학" }
     },
     {
@@ -615,9 +676,10 @@
       "stockCode": "383310",
       "stockName": "에코프로에이치엔",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/383310.png",
-      "currentPrice": 108700,
+      "currentPrice": 108400,
       "marketCap": 1652932656000,
-      "priceChange": 700,
+      "priceChange": 400,
+      "rateOfChange": 0.37,
       "sector": { "id": 64, "name": "화학" }
     },
     {
@@ -628,6 +690,7 @@
       "currentPrice": 6110,
       "marketCap": 492800000000,
       "priceChange": -50,
+      "rateOfChange": -0.81,
       "sector": { "id": 71, "name": "운송장비·부품" }
     },
     {
@@ -635,9 +698,10 @@
       "stockCode": "079160",
       "stockName": "CJ CGV",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/079160.png",
-      "currentPrice": 32850,
+      "currentPrice": 32900,
       "marketCap": 1224012432500,
-      "priceChange": 350,
+      "priceChange": 400,
+      "rateOfChange": 1.23,
       "sector": { "id": 21, "name": "서비스업" }
     },
     {
@@ -645,9 +709,10 @@
       "stockCode": "035760",
       "stockName": "CJ ENM",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/035760.png",
-      "currentPrice": 180300,
+      "currentPrice": 179900,
       "marketCap": 4045928913000,
-      "priceChange": -4200,
+      "priceChange": -4600,
+      "rateOfChange": -2.49,
       "sector": { "id": 106, "name": "방송서비스" }
     },
     {
@@ -655,9 +720,10 @@
       "stockCode": "253450",
       "stockName": "스튜디오드래곤",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/253450.png",
-      "currentPrice": 89500,
+      "currentPrice": 89400,
       "marketCap": 2767307857000,
-      "priceChange": -2700,
+      "priceChange": -2800,
+      "rateOfChange": -3.04,
       "sector": { "id": 98, "name": "오락·문화" }
     },
     {
@@ -668,6 +734,7 @@
       "currentPrice": 17850,
       "marketCap": 1655156630400,
       "priceChange": -350,
+      "rateOfChange": -1.92,
       "sector": { "id": 98, "name": "오락·문화" }
     },
     {
@@ -675,9 +742,10 @@
       "stockCode": "215000",
       "stockName": "골프존",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/215000.png",
-      "currentPrice": 142200,
+      "currentPrice": 142300,
       "marketCap": 906797467500,
-      "priceChange": -2300,
+      "priceChange": -2200,
+      "rateOfChange": -1.52,
       "sector": { "id": 109, "name": "소프트웨어" }
     },
     {
@@ -685,9 +753,10 @@
       "stockCode": "357780",
       "stockName": "솔브레인",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/357780.png",
-      "currentPrice": 264000,
+      "currentPrice": 264200,
       "marketCap": 2016204307200,
-      "priceChange": 4800,
+      "priceChange": 5000,
+      "rateOfChange": 1.93,
       "sector": { "id": 64, "name": "화학" }
     },
     {
@@ -698,6 +767,7 @@
       "currentPrice": 43350,
       "marketCap": 4818774892800,
       "priceChange": -1850,
+      "rateOfChange": -4.09,
       "sector": { "id": 71, "name": "운송장비·부품" }
     },
     {
@@ -708,6 +778,7 @@
       "currentPrice": 83100,
       "marketCap": 1938410196700,
       "priceChange": 1400,
+      "rateOfChange": 1.71,
       "sector": { "id": 98, "name": "오락·문화" }
     },
     {
@@ -715,9 +786,10 @@
       "stockCode": "100090",
       "stockName": "삼강엠앤티",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/100090.png",
-      "currentPrice": 20350,
+      "currentPrice": 20300,
       "marketCap": 736973515200,
-      "priceChange": 200,
+      "priceChange": 150,
+      "rateOfChange": 0.74,
       "sector": { "id": 67, "name": "금속" }
     },
     {
@@ -728,6 +800,7 @@
       "currentPrice": 23750,
       "marketCap": 637484000000,
       "priceChange": -500,
+      "rateOfChange": -2.06,
       "sector": { "id": 66, "name": "비금속" }
     },
     {
@@ -735,9 +808,10 @@
       "stockCode": "038500",
       "stockName": "삼표시멘트",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/038500.png",
-      "currentPrice": 4610,
+      "currentPrice": 4605,
       "marketCap": 502431569640,
-      "priceChange": -70,
+      "priceChange": -75,
+      "rateOfChange": -1.6,
       "sector": { "id": 66, "name": "비금속" }
     },
     {
@@ -745,9 +819,10 @@
       "stockCode": "032500",
       "stockName": "케이엠더블유",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/032500.png",
-      "currentPrice": 41400,
+      "currentPrice": 41250,
       "marketCap": 1656548732800,
-      "priceChange": -200,
+      "priceChange": -350,
+      "rateOfChange": -0.84,
       "sector": { "id": 111, "name": "통신장비" }
     },
     {
@@ -755,9 +830,10 @@
       "stockCode": "178320",
       "stockName": "서진시스템",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/178320.png",
-      "currentPrice": 34750,
+      "currentPrice": 34700,
       "marketCap": 656721718950,
-      "priceChange": -200,
+      "priceChange": -250,
+      "rateOfChange": -0.72,
       "sector": { "id": 111, "name": "통신장비" }
     },
     {
@@ -768,6 +844,7 @@
       "currentPrice": 12650,
       "marketCap": 1095216589550,
       "priceChange": -200,
+      "rateOfChange": -1.56,
       "sector": { "id": 81, "name": "숙박·음식" }
     },
     {
@@ -775,9 +852,10 @@
       "stockCode": "092040",
       "stockName": "아미코젠",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/092040.png",
-      "currentPrice": 33050,
+      "currentPrice": 33000,
       "marketCap": 662669803400,
-      "priceChange": -500,
+      "priceChange": -550,
+      "rateOfChange": -1.64,
       "sector": { "id": 60, "name": "음식료·담배" }
     },
     {
@@ -785,9 +863,10 @@
       "stockCode": "267980",
       "stockName": "매일유업",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/267980.png",
-      "currentPrice": 69400,
+      "currentPrice": 69600,
       "marketCap": 549839023800,
-      "priceChange": -700,
+      "priceChange": -500,
+      "rateOfChange": -0.71,
       "sector": { "id": 60, "name": "음식료·담배" }
     },
     {
@@ -795,9 +874,10 @@
       "stockCode": "003380",
       "stockName": "하림지주",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/003380.png",
-      "currentPrice": 9770,
+      "currentPrice": 9760,
       "marketCap": 888328308400,
-      "priceChange": 150,
+      "priceChange": 140,
+      "rateOfChange": 1.46,
       "sector": { "id": 86, "name": "금융" }
     },
     {
@@ -805,9 +885,10 @@
       "stockCode": "078020",
       "stockName": "이베스트투자증권",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/078020.png",
-      "currentPrice": 9230,
+      "currentPrice": 9210,
       "marketCap": 512091383700,
-      "priceChange": 0,
+      "priceChange": -20,
+      "rateOfChange": -0.22,
       "sector": { "id": 88, "name": "금융서비스" }
     },
     {
@@ -815,9 +896,10 @@
       "stockCode": "025900",
       "stockName": "동화기업",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/025900.png",
-      "currentPrice": 88100,
+      "currentPrice": 88400,
       "marketCap": 1816085812300,
-      "priceChange": -1800,
+      "priceChange": -1500,
+      "rateOfChange": -1.67,
       "sector": { "id": 62, "name": "종이·목재" }
     },
     {
@@ -825,9 +907,10 @@
       "stockCode": "078130",
       "stockName": "국일제지",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/078130.png",
-      "currentPrice": 4420,
+      "currentPrice": 4415,
       "marketCap": 576192890595,
-      "priceChange": -95,
+      "priceChange": -100,
+      "rateOfChange": -2.21,
       "sector": { "id": 62, "name": "종이·목재" }
     },
     {
@@ -835,9 +918,10 @@
       "stockCode": "217270",
       "stockName": "넵튠",
       "logo": "https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/217270.png",
-      "currentPrice": 21800,
+      "currentPrice": 21750,
       "marketCap": 676354278600,
-      "priceChange": 500,
+      "priceChange": 450,
+      "rateOfChange": 2.11,
       "sector": { "id": 63, "name": "출판·매체복제" }
     }
   ]

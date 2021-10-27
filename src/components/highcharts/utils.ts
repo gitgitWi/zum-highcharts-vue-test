@@ -141,7 +141,7 @@ const _krDummyRefiner = (stocks: KrDummyStock[]): UnknownObject[] => {
         name: stockName,
         value: marketCap,
         parent: `${id}`,
-        color: getColorByMap(rateOfChange ?? random() * 5),
+        color: getColorByMap(rateOfChange),
         gains: rateOfChange,
         logoSrc: logo,
         priceChange,

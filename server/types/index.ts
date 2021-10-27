@@ -7,6 +7,7 @@ export interface ZumDomesticStock {
       name: string;
       currentPrice: number;
       priceChange: number;
+      rateOfChange: number;
       marketCap: number;
     };
   };
