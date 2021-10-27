@@ -1,17 +1,16 @@
-import { TreemapSector } from "@/components/highcharts/types";
+import { TreemapStock } from "@/components/highcharts/types";
 import {
   colorMapReg,
   krBlueColorMap,
   usBlueColorMap,
   usGreenColorMap,
 } from "@/components/highcharts/constants";
+import { KrDummyStock, UnknownObject } from "@/types";
 
 const { random, floor, ceil } = Math;
 
 const getColorMap = (dataKey: string): ReadonlyMap<number, string> =>
-  dataKey.toLowerCase().includes("ko")
-    ? krBlueColorMap
-    : dataKey.match(colorMapReg)?.[0].toLowerCase() === "blue"
+  dataKey.match(colorMapReg)?.[0].toLowerCase() === "blue"
     ? usBlueColorMap
     : usGreenColorMap;
 
@@ -22,47 +21,6 @@ export const getStockColor =
       gains > 3 ? 3 : gains < -3 ? -3 : gains >= 0 ? floor(gains) : ceil(gains);
     return colorMap.get(parseGains) as string;
   };
-
-/**
- * API 데이터를 treemap chart에 맞게 정제
- * @returns 섹터별 데이터 배열로 분리
- */
-
-export const refineSectorData = (
-  sectors: TreemapSector[],
-  { dataKey = `US-Green` }: Record<string, string>
-): Record<string, string | number>[] => {
-  const points = [] as Record<string, string | number>[];
-  const getColorByMap = getStockColor(getColorMap(dataKey));
-
-  sectors?.forEach(({ name: sectorName, stocks }, sectorId) => {
-    const value = stocks.reduce(
-      (acc, { name: stockName, marketCap, logoSrc = "" }, stockId) => {
-        /** @todo API에서 받아오는 것으로 수정 필요 */
-        const gains = random() * 5 * (random() < 0.5 ? -1 : +1);
-
-        points.push({
-          id: `${sectorId}_${stockId}`,
-          name: stockName,
-          value: +marketCap,
-          parent: `${sectorId}`,
-          color: getColorByMap(gains),
-          gains,
-          logoSrc,
-        });
-        return (acc += marketCap);
-      },
-      0
-    );
-
-    points.push({
-      id: `${sectorId}`,
-      value,
-      name: sectorName,
-    });
-  });
-  return points;
-};
 
 export const getRelativeSize = (pointSize: number, ratio = 0.2): number => {
   return floor(ratio * pointSize);
@@ -84,6 +42,7 @@ export const getLogoHtml = (logoSrc: string, pointSize: number): string => {
     ">
     <img 
     src="${logoSrc}" 
+    alt=""
     loading="lazy" 
     style="
       width: 100%; 
@@ -123,4 +82,87 @@ export const getStockGainHtml = (gains: number, pointSize: number): string => {
   ${gains.toFixed(2)}%
   </span>
   `;
+};
+
+const _usDummyRefiner = (sectors: UnknownObject[], dataKey = `US-Green`) => {
+  const points: UnknownObject[] = [];
+  const getColorByMap = getStockColor(getColorMap(dataKey));
+  sectors?.forEach(({ name: sectorName, stocks }, sectorId) => {
+    const value = (stocks as TreemapStock[]).reduce(
+      (acc, { name: stockName, marketCap, logoSrc = "" }, stockId) => {
+        /** @todo API에서 받아오는 것으로 수정 필요 */
+        const gains = random() * 5 * (random() < 0.5 ? -1 : +1);
+
+        points.push({
+          id: `${sectorId}_${stockId}`,
+          name: stockName,
+          value: +marketCap,
+          parent: `${sectorId}`,
+          color: getColorByMap(gains),
+          gains,
+          logoSrc,
+        });
+        return (acc += marketCap);
+      },
+      0
+    );
+
+    points.push({
+      id: `${sectorId}`,
+      value,
+      name: sectorName,
+    });
+  });
+  return points;
+};
+
+const _krDummyRefiner = (stocks: KrDummyStock[]): UnknownObject[] => {
+  const points: UnknownObject[] = [];
+  const sectors = new Map<number, { id: string; name: string; value: number }>(
+    []
+  );
+  const getColorByMap = getStockColor(krBlueColorMap);
+
+  stocks.forEach(
+    ({
+      stockCode,
+      stockName,
+      logo,
+      rateOfChange,
+      marketCap,
+      priceChange,
+      sector: { id, name },
+    }) => {
+      sectors.has(id)
+        ? (sectors.get(id)!.value += marketCap)
+        : sectors.set(id, { id: `${id}`, name, value: marketCap });
+      points.push({
+        id: `${id}_${stockCode}`,
+        name: stockName,
+        value: marketCap,
+        parent: `${id}`,
+        color: getColorByMap(rateOfChange ?? random() * 5),
+        gains: rateOfChange,
+        logoSrc: logo,
+        priceChange,
+      });
+    }
+  );
+
+  console.warn(sectors);
+
+  return [...sectors.values(), ...points];
+};
+
+/**
+ * API 데이터를 treemap chart에 맞게 정제
+ * @returns 섹터별 데이터 배열로 분리
+ */
+export const refineSectorData = (
+  apiData: UnknownObject[] | KrDummyStock[],
+  { dataKey = `US-Green` }: Record<string, string>
+): UnknownObject[] => {
+  return dataKey.toLowerCase().includes("ko")
+    ? _krDummyRefiner(apiData as KrDummyStock[])
+    : _usDummyRefiner(apiData as UnknownObject[]);
 };

@@ -15,7 +15,6 @@
 <script lang="ts">
 import Vue from "vue";
 
-import { TreemapSector } from "@/components/highcharts/types";
 import { categoryReg } from "@/components/highcharts/constants";
 import { getChartOptions } from "@/components/highcharts/options";
 import { refineSectorData } from "@/components/highcharts/utils";
@@ -24,8 +23,12 @@ import CategoryTab from "./CategoryTab.vue";
 
 const dummyDataMap = {
   us: import("$assets/us-dummy.json").then(({ sectors }) => sectors),
-  kospi: import("$assets/kospi-dummy.json").then(({ sectors }) => sectors),
-  kosdaq: import("$assets/kosdaq-dummy.json").then(({ sectors }) => sectors),
+  kospi: import("$assets/kr-dummy.json").then(({ stocks }) =>
+    stocks.filter(({ category }) => category === "KOSPI")
+  ),
+  kosdaq: import("$assets/kr-dummy.json").then(({ stocks }) =>
+    stocks.filter(({ category }) => category === "KOSDAQ")
+  ),
 };
 
 export default Vue.extend({
@@ -40,7 +43,7 @@ export default Vue.extend({
     };
   },
 
-  mounted() {
+  async mounted() {
     this.loadChartData();
   },
 
@@ -50,9 +53,8 @@ export default Vue.extend({
       const category = (dataKey.match(categoryReg) ?? [`us`])[0].toLowerCase();
 
       // @ts-ignore
-      const apiData = await dummyDataMap[category];
+      const data = refineSectorData(await dummyDataMap[category], { dataKey });
 
-      const data = refineSectorData(apiData, { dataKey });
       this.chartOptions = getChartOptions(data);
     },
 
