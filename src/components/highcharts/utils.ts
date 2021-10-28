@@ -7,6 +7,8 @@ import {
 } from "@/components/highcharts/constants";
 import { KrDummyStock, UnknownObject } from "@/types";
 
+import { stocks as krBaseStocks } from "$assets/kr-base.json";
+
 const { random, floor, ceil } = Math;
 
 const getColorMap = (dataKey: string): ReadonlyMap<number, string> =>
@@ -116,12 +118,9 @@ const _usDummyRefiner = (sectors: UnknownObject[], dataKey = `US-Green`) => {
   return points;
 };
 
-const _krDummyRefiner = (
-  stocks: KrDummyStock[],
-  dataKey?: string
-): UnknownObject[] => {
+const _krDummyRefiner = (stocks: KrDummyStock[]): UnknownObject[] => {
   const points: UnknownObject[] = [];
-  const sectors = new Map<number, { id: string; name: string; value?: number }>(
+  const sectors = new Map<string, { id: string; name: string; value?: number }>(
     []
   );
   const getColorByMap = getStockColor(krBlueColorMap);
@@ -134,17 +133,22 @@ const _krDummyRefiner = (
       rateOfChange,
       marketCap,
       priceChange,
-      sector: { id, name },
+      sectorId,
+      sectorName,
     }) => {
-      if (!sectors.has(id)) sectors.set(id, { id: `${id}`, name });
+      if (!sectors.has(sectorId))
+        sectors.set(sectorId, { id: sectorId, name: sectorName });
       points.push({
-        id: `${id}_${stockCode}`,
+        id: `${sectorId}_${stockCode}`,
         name: stockName,
         value: marketCap,
-        parent: `${id}`,
+        parent: sectorId,
         color: getColorByMap(rateOfChange),
         gains: rateOfChange,
-        logoSrc: logo,
+        /** @todo API에 하나로 합치기 */
+        logoSrc:
+          krBaseStocks.find(({ stockCode: code }) => code === stockCode)
+            ?.logo ?? "",
         priceChange,
       });
     }
@@ -162,6 +166,6 @@ export const refineSectorData = (
   { dataKey = `US-Green` }: Record<string, string>
 ): UnknownObject[] => {
   return dataKey.toLowerCase().includes("ko")
-    ? _krDummyRefiner(apiData as KrDummyStock[], dataKey)
+    ? _krDummyRefiner(apiData as KrDummyStock[])
     : _usDummyRefiner(apiData as UnknownObject[], dataKey);
 };

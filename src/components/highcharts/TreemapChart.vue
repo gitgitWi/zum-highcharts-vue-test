@@ -45,10 +45,16 @@ export default Vue.extend({
     async loadChartData(): Promise<void> {
       const dataKey = this.currentDataKey as string;
       const category =
-        categoryKeys.find((key) => dataKey.toLowerCase().includes(key)) ?? `us`;
+        categoryKeys.find((key) => dataKey.toLowerCase().includes(key)) ?? `ko`;
 
       // @ts-ignore
-      const data = refineSectorData(await dummyDataMap[category], { dataKey });
+      const data = refineSectorData(
+        (await dummyDataMap?.[category]) ??
+          (await Promise.all([dummyDataMap.kospi, dummyDataMap.kosdaq])).flat(
+            1
+          ),
+        { dataKey }
+      );
 
       this.chartOptions = getChartOptions(data);
     },

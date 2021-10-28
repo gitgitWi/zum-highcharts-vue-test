@@ -34,17 +34,14 @@ export const usGreenColorMap: ReadonlyMap<number, string> = new Map([
   [3, "rgb(50, 204, 90)"],
 ]);
 
+const FUNCTION_BASEURL = `https://test-korean-tops.zum-wiii.workers.dev`;
+
 export const dummyDataMap: Readonly<{
   [key: string]: Promise<UnknownObject[]>;
 }> = {
   us: import("$assets/us-dummy.json").then(({ sectors }) => sectors),
-  korea: import("$assets/kr-dummy.json").then(({ stocks }) => stocks),
-  kospi: import("$assets/kr-dummy.json").then(({ stocks }) =>
-    stocks.filter(({ category }) => category === "KOSPI")
-  ),
-  kosdaq: import("$assets/kr-dummy.json").then(({ stocks }) =>
-    stocks.filter(({ category }) => category === "KOSDAQ")
-  ),
+  kospi: fetch(`${FUNCTION_BASEURL}/?target=kospi`).then((res) => res.json()),
+  kosdaq: fetch(`${FUNCTION_BASEURL}/?target=kosdaq`).then((res) => res.json()),
 };
 
 export const enum DataKeys {
