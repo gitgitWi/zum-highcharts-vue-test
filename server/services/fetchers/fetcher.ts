@@ -1,18 +1,20 @@
 import axios, { AxiosInstance } from "axios";
 
 export class Fetcher {
-  protected fetcher: AxiosInstance = axios.create({});
+  static baseUrl: string;
+  static token?: string | undefined;
+  static fetcher: AxiosInstance = axios.create({});
 
-  constructor(protected baseUrl: string, protected token?: string) {}
-
-  protected setFetcher(): void {
+  static setFetcher(baseUrl: string, token?: string): void {
+    this.baseUrl = baseUrl;
+    this.token = token;
     this.fetcher = axios.create({
-      baseURL: this.baseUrl,
-      params: this.token ? { token: this.token } : {},
+      baseURL: baseUrl,
+      params: token ? { token } : {},
     });
   }
 
-  protected sleep(ms = 500): void {
+  static sleep(ms = 500): void {
     const date = Date.now();
     let currentDate = Date.now();
     while (currentDate - date < ms) {

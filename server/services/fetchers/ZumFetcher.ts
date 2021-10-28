@@ -3,19 +3,35 @@ import { range } from "../../utils";
 
 import { Fetcher } from "./fetcher";
 
-export class ZumFetcher extends Fetcher {
-  constructor() {
-    super(`https://finance.zum.com/api`);
-  }
+interface SectorData {
+  id: string;
+  name: string;
+  ratio: number;
+  sectorIds: number[];
+}
 
-  private getLogoSrc(stockCode: string): string {
-    return `https://s3.ap-northeast-2.amazonaws.com/alphasquare-s3/static/images/company_logos/${stockCode}.png`;
+export class ZumFetcher extends Fetcher {
+  /**
+   * 코스피/코스닥 산업/섹터 id -> 트리맵전용 id로 역매핑
+   * @param sectors
+   * @returns
+   */
+  static reverseSectorIdMap(sectors: SectorData[]): {
+    [sectorId: string]: string;
+  } {
+    return sectors.reduce((acc, { id, sectorIds }) => {
+      sectorIds.forEach(
+        (sectorId) =>
+          // @ts-ignore
+          (acc[sectorId] = id)
+      );
+      return acc;
+    }, {});
   }
 
   static async searchStockCodes(
     stockNames: string[]
   ): Promise<UnknownObject[]> {
-    const _this = new ZumFetcher();
     const results: UnknownObject[] = [];
     const oneTime = 5;
     const interval = Math.floor(stockNames.length / oneTime);
@@ -28,12 +44,13 @@ export class ZumFetcher extends Fetcher {
         );
 
         const requests = currentNames.map((stockName) =>
-          _this.fetcher
+          ZumFetcher.fetcher
             .get(`https://finance.zum.com/api/suggest`, {
               params: { query: stockName },
             })
             .then(
               ({ data }) =>
+                // @ts-ignore
                 (data?.stock as UnknownObject[])?.filter(
                   ({ name }) => name === stockName
                 )[0]
@@ -56,7 +73,7 @@ export class ZumFetcher extends Fetcher {
   }
 
   static async getStockData(stockCodes: string[]): Promise<UnknownObject[]> {
-    const _this = new ZumFetcher();
+    const _this = ZumFetcher;
     const results: UnknownObject[] = [];
     const oneTime = 5;
     const interval = Math.floor(stockCodes.length / oneTime);
@@ -97,7 +114,6 @@ export class ZumFetcher extends Fetcher {
             }) => ({
               stockCode,
               stockName,
-              logo: _this.getLogoSrc(stockCode),
               currentPrice,
               marketCap,
               priceChange,
