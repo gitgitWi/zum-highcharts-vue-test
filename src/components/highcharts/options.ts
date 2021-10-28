@@ -117,18 +117,18 @@ export const getChartOptions = (data: any[]): Options => ({
         },
       ], // series.levels
 
-      tooltip: {
-        followPointer: true,
-        pointFormatter() {
-          const header = `<span style="font-weight: bold; font-style: italic;">${this.name}</span>`;
-          const infos: string[] = [header];
+      // tooltip: {
+      //   followPointer: true,
+      //   pointFormatter() {
+      //     const header = `<span style="font-weight: bold; font-style: italic;">${this.name}</span>`;
+      //     const infos: string[] = [header];
 
-          const { value = 0, gains = 0 } = this as unknown as TreemapStock;
-          if (value) infos.push(`market cap: $${value.toLocaleString()}`);
-          if (gains) infos.push(`gains: ${gains.toFixed(2)}%`);
-          return infos.join(`<br />`);
-        },
-      }, // series.tooltip
+      //     const { value = 0, gains = 0 } = this as unknown as TreemapStock;
+      //     if (value) infos.push(`market cap: $${value.toLocaleString()}`);
+      //     if (gains) infos.push(`gains: ${gains.toFixed(2)}%`);
+      //     return infos.join(`<br />`);
+      //   },
+      // }, // series.tooltip
 
       point: {
         events: {
@@ -152,6 +152,10 @@ export const getChartOptions = (data: any[]): Options => ({
     series: {
       cursor: "pointer",
     },
+  },
+
+  tooltip: {
+    enabled: false,
   },
 });
 
