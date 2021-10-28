@@ -47,27 +47,43 @@ export const dummyDataMap: Readonly<{
   ),
 };
 
+export const enum DataKeys {
+  KrBlue = `KOREA-Blue`,
+  KospiBlue = `KOSPI-Blue`,
+  KosdaqBlue = `KOSDAQ-Blue`,
+  UsBlue = `US-Blue`,
+  UsGreen = `US-Green`,
+}
+
 export const categoryKeys: ReadonlyArray<string> = Object.keys(dummyDataMap);
 export const colorMapReg = /(blue|green)/i;
 
 export const tabsDataMap: Readonly<
-  { innerText: string; dataKey: string; className: string }[]
+  { innerText: string; dataKey: DataKeys; className: string }[]
 > = [
   {
     innerText: `KR ALL(red-blue)`,
-    dataKey: `KOREA-Blue`,
+    dataKey: DataKeys.KrBlue,
     className: `red-blue`,
   },
   {
     innerText: `KOSPI(red-blue)`,
-    dataKey: `KOSPI-Blue`,
+    dataKey: DataKeys.KospiBlue,
     className: `red-blue`,
   },
   {
     innerText: `KOSDAQ(red-blue)`,
-    dataKey: `KOSDAQ-Blue`,
+    dataKey: DataKeys.KosdaqBlue,
     className: `red-blue`,
   },
-  { innerText: `US(blue-red)`, dataKey: `US-Blue`, className: `blue-red` },
-  { innerText: `US(green-red)`, dataKey: `US-Green`, className: `green-red` },
+  {
+    innerText: `US(blue-red)`,
+    dataKey: DataKeys.UsBlue,
+    className: `blue-red`,
+  },
+  {
+    innerText: `US(green-red)`,
+    dataKey: DataKeys.UsGreen,
+    className: `green-red`,
+  },
 ];

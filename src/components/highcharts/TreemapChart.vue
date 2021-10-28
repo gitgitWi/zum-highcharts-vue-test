@@ -15,7 +15,11 @@
 <script lang="ts">
 import Vue from "vue";
 
-import { dummyDataMap, categoryKeys } from "@/components/highcharts/constants";
+import {
+  dummyDataMap,
+  categoryKeys,
+  DataKeys,
+} from "@/components/highcharts/constants";
 import { getChartOptions } from "@/components/highcharts/options";
 import { refineSectorData } from "@/components/highcharts/utils";
 
@@ -29,7 +33,7 @@ export default Vue.extend({
   data(): Record<string, unknown> {
     return {
       chartOptions: {},
-      currentDataKey: `US-Green`,
+      currentDataKey: DataKeys.KosdaqBlue,
     };
   },
 
