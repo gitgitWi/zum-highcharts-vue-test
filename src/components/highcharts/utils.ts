@@ -38,7 +38,7 @@ export const getLogoHtml = (logoSrc: string, pointSize: number): string => {
       width: ${size}px; 
       height: ${size}px; 
       background-color: white;
-      border-radius: 50px;
+      border-radius: 100%;
     ">
     <img 
     src="${logoSrc}" 
@@ -47,7 +47,7 @@ export const getLogoHtml = (logoSrc: string, pointSize: number): string => {
     style="
       width: 100%; 
       object-fit: cover;
-      border-radius: 50px;
+      border-radius: 100%;
       " 
     />
   </div>
@@ -118,7 +118,7 @@ const _usDummyRefiner = (sectors: UnknownObject[], dataKey = `US-Green`) => {
 
 const _krDummyRefiner = (stocks: KrDummyStock[]): UnknownObject[] => {
   const points: UnknownObject[] = [];
-  const sectors = new Map<number, { id: string; name: string; value: number }>(
+  const sectors = new Map<number, { id: string; name: string; value?: number }>(
     []
   );
   const getColorByMap = getStockColor(krBlueColorMap);
@@ -133,9 +133,7 @@ const _krDummyRefiner = (stocks: KrDummyStock[]): UnknownObject[] => {
       priceChange,
       sector: { id, name },
     }) => {
-      sectors.has(id)
-        ? (sectors.get(id)!.value += marketCap)
-        : sectors.set(id, { id: `${id}`, name, value: marketCap });
+      if (!sectors.has(id)) sectors.set(id, { id: `${id}`, name });
       points.push({
         id: `${id}_${stockCode}`,
         name: stockName,
@@ -148,8 +146,6 @@ const _krDummyRefiner = (stocks: KrDummyStock[]): UnknownObject[] => {
       });
     }
   );
-
-  console.warn(sectors);
 
   return [...sectors.values(), ...points];
 };

@@ -15,21 +15,11 @@
 <script lang="ts">
 import Vue from "vue";
 
-import { categoryReg } from "@/components/highcharts/constants";
+import { dummyDataMap, categoryKeys } from "@/components/highcharts/constants";
 import { getChartOptions } from "@/components/highcharts/options";
 import { refineSectorData } from "@/components/highcharts/utils";
 
 import CategoryTab from "./CategoryTab.vue";
-
-const dummyDataMap = {
-  us: import("$assets/us-dummy.json").then(({ sectors }) => sectors),
-  kospi: import("$assets/kr-dummy.json").then(({ stocks }) =>
-    stocks.filter(({ category }) => category === "KOSPI")
-  ),
-  kosdaq: import("$assets/kr-dummy.json").then(({ stocks }) =>
-    stocks.filter(({ category }) => category === "KOSDAQ")
-  ),
-};
 
 export default Vue.extend({
   name: "TreemapChart",
@@ -50,7 +40,8 @@ export default Vue.extend({
   methods: {
     async loadChartData(): Promise<void> {
       const dataKey = this.currentDataKey as string;
-      const category = (dataKey.match(categoryReg) ?? [`us`])[0].toLowerCase();
+      const category =
+        categoryKeys.find((key) => dataKey.toLowerCase().includes(key)) ?? `us`;
 
       // @ts-ignore
       const data = refineSectorData(await dummyDataMap[category], { dataKey });

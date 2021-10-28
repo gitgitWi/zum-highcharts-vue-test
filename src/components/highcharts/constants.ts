@@ -1,3 +1,5 @@
+import { UnknownObject } from "@/types";
+
 export const borderColor = "#FFFFFF";
 
 export const krBlueColorMap: ReadonlyMap<number, string> = new Map([
@@ -32,10 +34,30 @@ export const usGreenColorMap: ReadonlyMap<number, string> = new Map([
   [3, "rgb(50, 204, 90)"],
 ]);
 
-export const colorMapReg = /(blue|green)/i;
-export const categoryReg = /(us|kospi|kosdaq)/i;
+export const dummyDataMap: Readonly<{
+  [key: string]: Promise<UnknownObject[]>;
+}> = {
+  us: import("$assets/us-dummy.json").then(({ sectors }) => sectors),
+  korea: import("$assets/kr-dummy.json").then(({ stocks }) => stocks),
+  kospi: import("$assets/kr-dummy.json").then(({ stocks }) =>
+    stocks.filter(({ category }) => category === "KOSPI")
+  ),
+  kosdaq: import("$assets/kr-dummy.json").then(({ stocks }) =>
+    stocks.filter(({ category }) => category === "KOSDAQ")
+  ),
+};
 
-export const tabsDataMap = [
+export const categoryKeys: ReadonlyArray<string> = Object.keys(dummyDataMap);
+export const colorMapReg = /(blue|green)/i;
+
+export const tabsDataMap: Readonly<
+  { innerText: string; dataKey: string; className: string }[]
+> = [
+  {
+    innerText: `KR ALL(red-blue)`,
+    dataKey: `KOREA-Blue`,
+    className: `red-blue`,
+  },
   {
     innerText: `KOSPI(red-blue)`,
     dataKey: `KOSPI-Blue`,
