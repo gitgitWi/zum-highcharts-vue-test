@@ -37,7 +37,7 @@ export const getLogoHtml = (logoSrc: string, pointSize: number): string => {
       align-items: center;
       width: ${size}px; 
       height: ${size}px; 
-      background-color: white;
+      background-color: rgb(255,255,255);
       border-radius: 100%;
     ">
     <img 
@@ -45,10 +45,9 @@ export const getLogoHtml = (logoSrc: string, pointSize: number): string => {
     alt=""
     loading="lazy" 
     style="
-      width: 100%; 
+      width: 70%; 
       height: max-content;
       object-fit: cover;
-      border-radius: ${size / 2}px;
       " 
     />
   </div>
@@ -117,7 +116,10 @@ const _usDummyRefiner = (sectors: UnknownObject[], dataKey = `US-Green`) => {
   return points;
 };
 
-const _krDummyRefiner = (stocks: KrDummyStock[]): UnknownObject[] => {
+const _krDummyRefiner = (
+  stocks: KrDummyStock[],
+  dataKey?: string
+): UnknownObject[] => {
   const points: UnknownObject[] = [];
   const sectors = new Map<number, { id: string; name: string; value?: number }>(
     []
@@ -160,6 +162,6 @@ export const refineSectorData = (
   { dataKey = `US-Green` }: Record<string, string>
 ): UnknownObject[] => {
   return dataKey.toLowerCase().includes("ko")
-    ? _krDummyRefiner(apiData as KrDummyStock[])
-    : _usDummyRefiner(apiData as UnknownObject[]);
+    ? _krDummyRefiner(apiData as KrDummyStock[], dataKey)
+    : _usDummyRefiner(apiData as UnknownObject[], dataKey);
 };
