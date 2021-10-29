@@ -129,20 +129,20 @@ const _krDummyRefiner = (stocks: KrDummyStock[]): UnknownObject[] => {
     ({
       stockCode,
       stockName,
-      logo,
+      // logo,
       rateOfChange,
       marketCap,
       priceChange,
-      sectorId,
+      sectorCode,
       sectorName,
     }) => {
-      if (!sectors.has(sectorId))
-        sectors.set(sectorId, { id: sectorId, name: sectorName });
+      if (!sectors.has(sectorCode))
+        sectors.set(sectorCode, { id: sectorCode, name: sectorName });
       points.push({
-        id: `${sectorId}_${stockCode}`,
+        id: `${sectorCode}_${stockCode}`,
         name: stockName,
         value: marketCap,
-        parent: sectorId,
+        parent: sectorCode,
         color: getColorByMap(rateOfChange),
         gains: rateOfChange,
         /** @todo API에 하나로 합치기 */

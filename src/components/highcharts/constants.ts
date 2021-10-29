@@ -1,3 +1,4 @@
+import { SECTORS_FUNCTION_BASEURL } from "@/configs";
 import { UnknownObject } from "@/types";
 
 export const borderColor = "#FFFFFF";
@@ -34,14 +35,16 @@ export const usGreenColorMap: ReadonlyMap<number, string> = new Map([
   [3, "rgb(50, 204, 90)"],
 ]);
 
-const FUNCTION_BASEURL = `https://test-korean-tops.zum-wiii.workers.dev`;
-
 export const dummyDataMap: Readonly<{
   [key: string]: Promise<UnknownObject[]>;
 }> = {
   us: import("$assets/us-dummy.json").then(({ sectors }) => sectors),
-  kospi: fetch(`${FUNCTION_BASEURL}/?target=kospi`).then((res) => res.json()),
-  kosdaq: fetch(`${FUNCTION_BASEURL}/?target=kosdaq`).then((res) => res.json()),
+  kospi: fetch(`${SECTORS_FUNCTION_BASEURL}/kospi`)
+    .then((res) => res.json())
+    .then(({ results }) => results),
+  kosdaq: fetch(`${SECTORS_FUNCTION_BASEURL}/kosdaq`)
+    .then((res) => res.json())
+    .then(({ results }) => results),
 };
 
 export const enum DataKeys {

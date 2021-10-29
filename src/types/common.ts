@@ -11,6 +11,6 @@ export interface KrDummyStock {
   marketCap: number;
   priceChange: number;
   rateOfChange: number;
-  sectorId: string;
+  sectorCode: string;
   sectorName: string;
 }

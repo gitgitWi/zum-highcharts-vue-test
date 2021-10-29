@@ -1,1 +1,2 @@
-export const API_TOKEN = process.env?.VUE_APP_FINNHUB_TOKEN;
+export const SECTORS_FUNCTION_BASEURL =
+  process.env.VUE_APP_SECTORS_FUNCTION_BASEURL;
