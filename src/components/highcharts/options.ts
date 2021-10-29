@@ -11,20 +11,16 @@ import {
  */
 export const getChartOptions = (data: any[]): Options => ({
   title: {
-    text: "[Title] US Stock Market Map",
+    text: "",
   },
 
   subtitle: {
-    text: "[SubTitle] Treemap Chart Test",
+    // text: "[SubTitle] Treemap Chart Test",
   },
 
   chart: {
     type: "treemap",
-    /**
-     * @todo
-     * CSS 사용해 커스텀하는 경우 true로 변경하고 모든 스타일 직접 지정해야 함
-     */
-    // styledMode: true,
+    zoomType: "xy",
   },
 
   /**

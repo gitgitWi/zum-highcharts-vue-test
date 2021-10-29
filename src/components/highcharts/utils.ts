@@ -48,7 +48,6 @@ export const getLogoHtml = (logoSrc: string, pointSize: number): string => {
     loading="lazy" 
     style="
       width: 70%; 
-      height: max-content;
       object-fit: cover;
       " 
     />
