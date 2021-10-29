@@ -4,7 +4,9 @@
       :current-category.sync="currentDataKey"
       @click-button="tabButtonClickHandler"
     />
+    <loading-component v-if="isLoading" />
     <highcharts
+      v-else
       id="container"
       :options="chartOptions"
       :deep-copy-on-update="true"
@@ -23,17 +25,19 @@ import {
 import { getChartOptions } from "@/components/highcharts/options";
 import { refineSectorData } from "@/components/highcharts/utils";
 
+import { LoadingComponent } from "@/components/loading";
 import CategoryTab from "./CategoryTab.vue";
 
 export default Vue.extend({
   name: "TreemapChart",
 
-  components: { CategoryTab },
+  components: { CategoryTab, LoadingComponent },
 
-  data(): Record<string, unknown> {
+  data() {
     return {
       chartOptions: {},
       currentDataKey: DataKeys.KosdaqBlue,
+      isLoading: true,
     };
   },
 
@@ -47,19 +51,19 @@ export default Vue.extend({
       const category =
         categoryKeys.find((key) => dataKey.toLowerCase().includes(key)) ?? `ko`;
 
+      const dataPromise =
+        dummyDataMap?.[category] ??
+        Promise.all([dummyDataMap.kospi, dummyDataMap.kosdaq]);
+
       // @ts-ignore
-      const data = refineSectorData(
-        (await dummyDataMap?.[category]) ??
-          (await Promise.all([dummyDataMap.kospi, dummyDataMap.kosdaq])).flat(
-            1
-          ),
-        { dataKey }
-      );
+      const data = refineSectorData((await dataPromise).flat(), { dataKey });
+      if (!data.length) return;
 
       this.chartOptions = getChartOptions(data);
+      this.isLoading = false;
     },
 
-    tabButtonClickHandler(dataKey: string) {
+    tabButtonClickHandler(dataKey: DataKeys) {
       this.currentDataKey = dataKey;
       this.loadChartData();
     },
