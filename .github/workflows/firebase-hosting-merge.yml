@@ -6,8 +6,6 @@ name: Deploy to Firebase Hosting on merge
   push:
     branches:
       - main
-env:
-  VUE_APP_SECTORS_FUNCTION_BASEURL: "${{ secrets.VUE_APP_SECTORS_FUNCTION_BASEURL }}"
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
@@ -25,6 +23,8 @@ jobs:
           node-version: "14.x"
       - run: echo "VUE_APP_LAST_BUILD=$(TZ="Asia/Seoul" date +'%Y-%m-%d %H:%M')" >> $GITHUB_ENV && echo $VUE_APP_LAST_BUILD
       - run: yarn install --frozen-lockfile --production && yarn build
+        with:
+          VUE_APP_SECTORS_FUNCTION_BASEURL: "${{ secrets.VUE_APP_SECTORS_FUNCTION_BASEURL }}"
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
