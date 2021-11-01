@@ -54,6 +54,7 @@ export const dummyDataMap: Readonly<{
 };
 
 export const enum DataKeys {
+  KrBlueBlack = `KOREA-Blue-Black`,
   KrBlue = `KOREA-Blue`,
   KospiBlue = `KOSPI-Blue`,
   KosdaqBlue = `KOSDAQ-Blue`,
@@ -67,6 +68,11 @@ export const colorMapReg = /(blue|green)/i;
 export const tabsDataMap: Readonly<
   { innerText: string; dataKey: DataKeys; className: string }[]
 > = [
+  {
+    innerText: `KR ALL(red-blue-blackBg)`,
+    dataKey: DataKeys.KrBlueBlack,
+    className: `red-blue`,
+  },
   {
     innerText: `KR ALL(red-blue)`,
     dataKey: DataKeys.KrBlue,

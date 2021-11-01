@@ -6,10 +6,15 @@ import {
   getStockNameHtml,
 } from "@/components/highcharts/utils";
 
+const { MAX_SAFE_INTEGER } = Number;
+
 /**
  * @see {https://api.highcharts.com/highcharts/}
  */
-export const getChartOptions = (data: any[]): Options => ({
+export const getChartOptions = (
+  data: any[],
+  mainColor = borderColor
+): Options => ({
   title: {
     text: "",
   },
@@ -44,7 +49,7 @@ export const getChartOptions = (data: any[]): Options => ({
       },
 
       borderWidth: 10,
-      borderColor,
+      borderColor: mainColor,
 
       levels: [
         {
@@ -60,17 +65,30 @@ export const getChartOptions = (data: any[]): Options => ({
             align: "left",
             allowOverlap: false,
             style: {
-              backgroundColor: borderColor,
-              fontSize: "16px",
-              fontWeight: "900",
+              backgroundColor: mainColor,
+
               textOverflow: "ellipsis",
             },
-            inside: false,
+            inside: true,
             padding: 5,
             verticalAlign: "top",
-            backgroundColor: borderColor,
+            backgroundColor: mainColor,
+
+            formatter() {
+              const {
+                shapeArgs: {
+                  width = MAX_SAFE_INTEGER,
+                  height = MAX_SAFE_INTEGER,
+                },
+              } = this.point as ChartPointStock;
+              const relativeSize = Math.min(width, height) * 0.07;
+
+              return `<span class="sector-label ${
+                mainColor === borderColor ? "black-theme" : "white-theme"
+              }" style="font-size: ${relativeSize}px">${this.key}</span>`;
+            },
           },
-          borderColor,
+          borderColor: mainColor,
           borderWidth: 10,
         },
         {
@@ -89,8 +107,6 @@ export const getChartOptions = (data: any[]): Options => ({
               textAlign: "center",
             },
             formatter() {
-              const { MAX_SAFE_INTEGER } = Number;
-
               /** @description 신규상장주인 경우 시가총액 데이터 없음 */
               if (!(this.point as ChartPointStock)?.shapeArgs) return ``;
 

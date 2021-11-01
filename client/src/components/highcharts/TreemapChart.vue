@@ -16,6 +16,7 @@ import {
   dummyDataMap,
   categoryKeys,
   DataKeys,
+  borderColor,
 } from "@/components/highcharts/constants";
 import { getChartOptions } from "@/components/highcharts/options";
 import { refineSectorData } from "@/components/highcharts/utils";
@@ -55,7 +56,10 @@ export default Vue.extend({
       const data = refineSectorData((await dataPromise).flat(), { dataKey });
       if (!data.length) return;
 
-      this.chartOptions = getChartOptions(data);
+      this.chartOptions = getChartOptions(
+        data,
+        dataKey.includes("Black") ? `#000000` : borderColor
+      );
       this.setDocumentTitle(dataKey);
     },
 
@@ -86,6 +90,20 @@ export default Vue.extend({
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
   display: grid;
   place-items: center;
+
+  &::v-deep {
+    .sector-label {
+      font-weight: 900;
+
+      &.black-theme {
+        color: black;
+      }
+
+      &.white-theme {
+        color: white;
+      }
+    }
+  }
 }
 
 #container {
