@@ -1,6 +1,18 @@
 import { Point } from "highcharts";
 
-export { Options, SeriesOptionsType } from "highcharts";
+export {
+  ChartOptions,
+  DataLabelsOptions,
+  Options,
+  PlotOptions,
+  PlotTreemapLevelsOptions,
+  PointOptionsObject,
+  SeriesOptionsType,
+  SeriesTreemapOptions,
+  SubtitleOptions,
+  TitleOptions,
+  TooltipOptions,
+} from "highcharts";
 
 interface TreemapItem {
   id: string;
