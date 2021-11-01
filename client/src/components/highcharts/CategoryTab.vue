@@ -41,13 +41,14 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 section {
-  width: 100%;
+  width: 90%;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 
   button {
-    width: 200px;
+    min-width: 150px;
     height: 2rem;
     margin: 15px;
     border: none;
@@ -57,6 +58,7 @@ section {
     text-shadow: 0 0 2px whitesmoke;
     font-size: 1rem;
     font-weight: 300;
+    text-align: center;
 
     &:hover {
       font-size: 1.1rem;
