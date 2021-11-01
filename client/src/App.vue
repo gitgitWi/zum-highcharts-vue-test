@@ -12,6 +12,7 @@ import { TreemapChart, HeaderWrapper, FooterWrapper } from "./components";
 
 export default Vue.extend({
   name: "App",
+
   components: {
     HeaderWrapper,
     TreemapChart,

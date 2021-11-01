@@ -43,6 +43,7 @@ export default Vue.extend({
 
   async mounted() {
     this.loadChartData();
+    this.setIsLoading(false);
   },
 
   methods: {
@@ -60,12 +61,23 @@ export default Vue.extend({
       if (!data.length) return;
 
       this.chartOptions = getChartOptions(data);
-      this.isLoading = false;
+      this.setDocumentTitle(dataKey);
     },
 
     tabButtonClickHandler(dataKey: DataKeys) {
+      this.setIsLoading(true);
       this.currentDataKey = dataKey;
       this.loadChartData();
+      this.setIsLoading(false);
+    },
+
+    setIsLoading(isLoading: boolean) {
+      this.isLoading = isLoading;
+      console.log(this.isLoading);
+    },
+
+    setDocumentTitle(title: string) {
+      document.title = `금융 줌 Map ${title}`;
     },
   },
 });

@@ -4,6 +4,7 @@
       v-for="({ innerText, dataKey, className }, idx) in tabsDataMap"
       :key="`category-tab-button-${idx}`"
       :class="className"
+      @click="() => $emit(`click-button`, dataKey)"
     >
       <input
         :id="dataKey"
@@ -11,7 +12,7 @@
         name="tab-select"
         :checked="dataKey.includes(currentCategory)"
       />
-      <label :for="dataKey" @click="() => $emit(`click-button`, dataKey)">
+      <label :for="dataKey">
         {{ innerText }}
       </label>
     </button>
