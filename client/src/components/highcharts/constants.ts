@@ -39,12 +39,18 @@ export const dummyDataMap: Readonly<{
   [key: string]: Promise<UnknownObject[]>;
 }> = {
   us: import("$assets/us-dummy.json").then(({ sectors }) => sectors),
-  kospi: fetch(`${SECTORS_FUNCTION_BASEURL}/kospi`)
-    .then((res) => res.json())
-    .then(({ results }) => results),
-  kosdaq: fetch(`${SECTORS_FUNCTION_BASEURL}/kosdaq`)
-    .then((res) => res.json())
-    .then(({ results }) => results),
+  kospi:
+    process.env.NODE_ENV === "production"
+      ? fetch(`${SECTORS_FUNCTION_BASEURL}/kospi`)
+          .then((res) => res.json())
+          .then(({ results }) => results)
+      : import("$assets/kospi-dummy.json").then(({ results }) => results),
+  kosdaq:
+    process.env.NODE_ENV === "production"
+      ? fetch(`${SECTORS_FUNCTION_BASEURL}/kosdaq`)
+          .then((res) => res.json())
+          .then(({ results }) => results)
+      : import("$assets/kosdaq-dummy.json").then(({ results }) => results),
 };
 
 export const enum DataKeys {
