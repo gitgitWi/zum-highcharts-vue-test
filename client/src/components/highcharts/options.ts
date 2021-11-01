@@ -1,4 +1,4 @@
-import { Options, TreemapStock } from "@/components/highcharts/types";
+import { ChartPointStock, Options } from "@/components/highcharts/types";
 import { borderColor } from "@/components/highcharts/constants";
 import {
   getLogoHtml,
@@ -91,15 +91,18 @@ export const getChartOptions = (data: any[]): Options => ({
             formatter() {
               const { MAX_SAFE_INTEGER } = Number;
 
+              /** @description 신규상장주인 경우 시가총액 데이터 없음 */
+              if (!(this.point as ChartPointStock)?.shapeArgs) return ``;
+
               const {
                 gains = 0,
                 logoSrc,
-                // @ts-ignore
                 shapeArgs: {
                   width = MAX_SAFE_INTEGER,
                   height = MAX_SAFE_INTEGER,
                 },
-              } = this.point as unknown as TreemapStock;
+              } = this.point as ChartPointStock;
+
               const relativeSize = Math.min(width, height);
 
               const infos: string[] = [];
@@ -112,19 +115,6 @@ export const getChartOptions = (data: any[]): Options => ({
           borderWidth: 1,
         },
       ], // series.levels
-
-      // tooltip: {
-      //   followPointer: true,
-      //   pointFormatter() {
-      //     const header = `<span style="font-weight: bold; font-style: italic;">${this.name}</span>`;
-      //     const infos: string[] = [header];
-
-      //     const { value = 0, gains = 0 } = this as unknown as TreemapStock;
-      //     if (value) infos.push(`market cap: $${value.toLocaleString()}`);
-      //     if (gains) infos.push(`gains: ${gains.toFixed(2)}%`);
-      //     return infos.join(`<br />`);
-      //   },
-      // }, // series.tooltip
 
       point: {
         events: {
@@ -163,11 +153,6 @@ export const globalOptions: Options = {
 
   data: {
     dateFormat: "YYYY/mm/dd",
-  },
-
-  time: {
-    /** Moment.js 잇어야 */
-    // timezone: 'Asia/Seoul',
   },
 
   /** 공유/다운로드 버튼 */

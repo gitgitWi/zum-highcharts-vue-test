@@ -1,10 +1,12 @@
+import { Point } from "highcharts";
+
 export { Options, SeriesOptionsType } from "highcharts";
 
 interface TreemapItem {
   id: string;
   name: string;
   marketCap: number;
-  value: number;
+  value?: number | null;
 }
 
 export interface TreemapStock extends TreemapItem {
@@ -27,4 +29,11 @@ type MarketNames = "kospi" | "kosdaq" | "dow" | "nasdaq" | "dummy";
 export interface TreemapMarket {
   name: MarketNames;
   sectors: TreemapSector[];
+}
+
+export interface ChartPointStock extends TreemapStock, Point {
+  shapeArgs: {
+    width: number;
+    height: number;
+  };
 }
