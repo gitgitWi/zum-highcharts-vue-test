@@ -23,7 +23,7 @@ jobs:
           node-version: "14.x"
       - run: echo "VUE_APP_LAST_BUILD=$(TZ="Asia/Seoul" date +'%Y-%m-%d %H:%M')" >> $GITHUB_ENV && echo $VUE_APP_LAST_BUILD
       - name: Build app
-        run: yarn install --frozen-lockfile --production && yarn build
+        run: yarn workspace client install --frozen-lockfile --production && yarn workspace client build
         env:
           VUE_APP_SECTORS_FUNCTION_BASEURL: "${{ secrets.VUE_APP_SECTORS_FUNCTION_BASEURL }}"
       - uses: FirebaseExtended/action-hosting-deploy@v0

@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
+    "target": "ESNext",
+    "module": "CommonJS",
     "strict": true,
     "jsx": "preserve",
     "importHelpers": true,
@@ -11,20 +11,11 @@
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "sourceMap": false,
-    "baseUrl": ".",
+    "newLine": "lf",
+    "removeComments": true,
+    "forceConsistentCasingInFileNames": true,
     "types": ["webpack-env"],
-    "paths": {
-      "@/*": ["src/*"],
-      "$assets/*": ["assets/*"]
-    },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "tests/**/*.ts",
-    "tests/**/*.tsx"
-  ],
   "exclude": ["node_modules"]
 }

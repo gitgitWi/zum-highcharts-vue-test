@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require("path");
 
 /**
@@ -7,7 +8,7 @@ const configs = {
   configureWebpack: {
     resolve: {
       alias: {
-        $assets: path.join(__dirname, "assets"),
+        $assets: path.join(__dirname, "src", "assets"),
       },
     },
   },
