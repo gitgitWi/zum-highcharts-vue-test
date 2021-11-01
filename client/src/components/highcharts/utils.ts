@@ -128,7 +128,7 @@ const _krDummyRefiner = (stocks: KrDummyStock[]): UnknownObject[] => {
     ({
       stockCode,
       stockName,
-      // logo,
+      // logo, // TODO: API에 logoSrc 들어가는지 확인
       rateOfChange,
       marketCap,
       priceChange,
@@ -149,6 +149,7 @@ const _krDummyRefiner = (stocks: KrDummyStock[]): UnknownObject[] => {
           krBaseStocks.find(({ stockCode: code }) => code === stockCode)
             ?.logo ?? "",
         priceChange,
+        y: marketCap,
       });
     }
   );

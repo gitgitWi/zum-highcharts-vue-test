@@ -5,6 +5,7 @@ import {
   getStockGainHtml,
   getStockNameHtml,
 } from "@/components/highcharts/utils";
+import { KrMapOptionBuilder } from "./KrOptionBuilder";
 
 const { MAX_SAFE_INTEGER } = Number;
 
@@ -20,12 +21,13 @@ export const getChartOptions = (
   },
 
   subtitle: {
-    // text: "[SubTitle] Treemap Chart Test",
+    text: "",
   },
 
   chart: {
     type: "treemap",
     zoomType: "xy",
+    backgroundColor: mainColor,
   },
 
   /**
@@ -65,8 +67,6 @@ export const getChartOptions = (
             align: "left",
             allowOverlap: false,
             style: {
-              backgroundColor: mainColor,
-
               textOverflow: "ellipsis",
             },
             inside: true,
@@ -192,3 +192,5 @@ export const globalOptions: Options = {
     ],
   },
 };
+
+export const krMapOptionBuilder = new KrMapOptionBuilder();
