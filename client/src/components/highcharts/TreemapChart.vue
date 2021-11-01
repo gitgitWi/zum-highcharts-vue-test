@@ -5,12 +5,7 @@
       @click-button="tabButtonClickHandler"
     />
     <loading-component v-if="isLoading" />
-    <highcharts
-      v-else
-      id="container"
-      :options="chartOptions"
-      :deep-copy-on-update="true"
-    />
+    <highcharts v-else id="container" :options="chartOptions" />
   </div>
 </template>
 
@@ -41,7 +36,7 @@ export default Vue.extend({
     };
   },
 
-  async mounted() {
+  mounted() {
     this.loadChartData();
     this.setIsLoading(false);
   },
@@ -73,7 +68,6 @@ export default Vue.extend({
 
     setIsLoading(isLoading: boolean) {
       this.isLoading = isLoading;
-      console.log(this.isLoading);
     },
 
     setDocumentTitle(title: string) {
