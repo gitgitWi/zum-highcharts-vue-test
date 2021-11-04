@@ -4,6 +4,7 @@ import {
   krBlueColorMap,
   usBlueColorMap,
   usGreenColorMap,
+  widthLevelToFontSizeArray,
 } from "@/components/highcharts/constants";
 import { KrDummyStock, UnknownObject } from "@/types";
 
@@ -26,55 +27,45 @@ export const getStockColor =
     let parseGains: number;
 
     if (gains >= 0) {
-      parseGains = gains >= 3 ? MAX_GAINS : floor(gains * 2);
+      parseGains = gains >= 3 ? MAX_GAINS : ceil(gains * 2);
     } else {
-      parseGains = gains <= -3 ? MIN_GAINS : ceil(gains * 2);
+      parseGains = gains <= -3 ? MIN_GAINS : floor(gains * 2);
     }
 
     return colorMap.get(parseGains * 0.5) as string;
   };
 
-export const getRelativeSize = (pointSize: number, ratio = 0.2): number => {
-  return floor(ratio * pointSize);
-};
+/**
+ * 각 종목 영역 사이즈에 맞는 폰트 사이즈 탐색
+ * - 최대 2천여개 종목에 대해 작업 수행하기 때문에
+ * - 조금이라도 더 빠르게 탐색할 수 있도록 이진탐색 활용
+ * @param width 종목 영역 width
+ * @returns 폰트 사이즈
+ */
+export const getFontSize = (width: number): number => {
+  let front = 0;
+  let rear = widthLevelToFontSizeArray.length;
 
-export const getLogoHtml = (logoSrc: string, pointSize: number): string => {
-  const size = getRelativeSize(pointSize, 0.2);
+  while (front <= rear) {
+    const mid = floor((front + rear) * 0.5);
+    const [levelSize] = widthLevelToFontSizeArray[mid];
 
-  return `
-  <div 
-    style="
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: ${size}px; 
-      height: ${size}px; 
-      background-color: rgb(255,255,255);
-      border-radius: 100%;
-    ">
-    <img 
-    src="${logoSrc}" 
-    alt=""
-    loading="lazy" 
-    style="
-      width: 70%; 
-      object-fit: cover;
-      " 
-    />
-  </div>
-  `;
+    width >= levelSize ? (rear = mid - 1) : (front = mid + 1);
+  }
+
+  return widthLevelToFontSizeArray[front][1];
 };
 
 export const getStockNameHtml = (
   stockName: string,
   pointSize: number
 ): string => {
-  const fontSize = getRelativeSize(pointSize, 0.07);
+  const fontSize = getFontSize(pointSize);
   return `
     <span 
       style="
         height: max-content;
-        line-height: ${fontSize}px;
+        line-height: 1;
         font-weight: 900;
         font-size: ${fontSize}px;
     ">
@@ -83,12 +74,15 @@ export const getStockNameHtml = (
 };
 
 export const getStockGainHtml = (gains: number, pointSize: number): string => {
+  const fontSize = getFontSize(pointSize);
+
+  if (fontSize <= 10) return ``;
   return `
   <span 
     style="
       height: max-content; 
       line-height: 1; 
-      font-size: ${getRelativeSize(pointSize, 0.05)}px;
+      font-size: ${fontSize - 2}px;
   ">
   ${gains.toFixed(2)}%
   </span>

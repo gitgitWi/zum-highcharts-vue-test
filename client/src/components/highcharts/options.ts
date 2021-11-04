@@ -1,13 +1,16 @@
 import { ChartPointStock, Options } from "@/components/highcharts/types";
-import { borderColor } from "@/components/highcharts/constants";
 import {
-  getLogoHtml,
+  borderColor,
+  MAX_SAFE_INTEGER,
+} from "@/components/highcharts/constants";
+import {
+  getFontSize,
   getStockGainHtml,
   getStockNameHtml,
 } from "@/components/highcharts/utils";
 import { KrMapOptionBuilder } from "./KrOptionBuilder";
 
-const { MAX_SAFE_INTEGER } = Number;
+const { min } = Math;
 
 /**
  * @see {https://api.highcharts.com/highcharts/}
@@ -81,11 +84,11 @@ export const getChartOptions = (
                   height = MAX_SAFE_INTEGER,
                 },
               } = this.point as ChartPointStock;
-              const relativeSize = Math.min(width, height) * 0.07;
+              const fontSize = getFontSize(min(width, height));
 
               return `<span class="sector-label ${
                 mainColor === borderColor ? "black-theme" : "white-theme"
-              }" style="font-size: ${relativeSize}px">${this.key}</span>`;
+              }" style="font-size: ${fontSize}px">${this.key}</span>`;
             },
           },
           borderColor: mainColor,
@@ -112,19 +115,17 @@ export const getChartOptions = (
 
               const {
                 gains = 0,
-                logoSrc,
                 shapeArgs: {
                   width = MAX_SAFE_INTEGER,
                   height = MAX_SAFE_INTEGER,
                 },
               } = this.point as ChartPointStock;
 
-              const relativeSize = Math.min(width, height);
+              const pointSize = min(width, height);
 
               const infos: string[] = [];
-              if (logoSrc) infos.push(getLogoHtml(logoSrc, relativeSize));
-              infos.push(getStockNameHtml(this.key ?? "", relativeSize));
-              infos.push(getStockGainHtml(gains, relativeSize));
+              infos.push(getStockNameHtml(this.key ?? "", pointSize));
+              infos.push(getStockGainHtml(gains, pointSize));
               return infos.join(`<br />`);
             },
           },

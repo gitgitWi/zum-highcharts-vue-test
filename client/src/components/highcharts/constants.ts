@@ -1,6 +1,8 @@
 import { SECTORS_FUNCTION_BASEURL } from "@/configs";
 import { UnknownObject } from "@/types";
 
+export const { MAX_SAFE_INTEGER, MIN_SAFE_INTEGER } = Number;
+
 export const borderColor = "#FFFFFF";
 
 export const krBlueColorMap: ReadonlyMap<number, string> = new Map([
@@ -104,4 +106,25 @@ export const tabsDataMap: Readonly<
     dataKey: DataKeys.UsGreen,
     className: `green-red`,
   },
+];
+
+/**
+ * @description
+ * 구역 가로 사이즈 -> 종목명 폰트 사이즈 맵핑
+ * - 등락율 숫자 사이즈는 (종목명 사이즈 - 2)
+ */
+export const widthLevelToFontSizeArray: ReadonlyArray<[number, number]> = [
+  [MAX_SAFE_INTEGER, 28],
+  [240, 28],
+  [220, 26],
+  [200, 24],
+  [170, 22],
+  [150, 20],
+  [130, 18],
+  [100, 16],
+  [80, 14],
+  [60, 12],
+  [50, 10],
+  [36, 9],
+  [MIN_SAFE_INTEGER, 9],
 ];
