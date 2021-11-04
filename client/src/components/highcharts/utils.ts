@@ -7,8 +7,6 @@ import {
 } from "@/components/highcharts/constants";
 import { KrDummyStock, UnknownObject } from "@/types";
 
-import { stocks as krBaseStocks } from "$assets/kr-base.json";
-
 const { random, floor, ceil } = Math;
 
 const getColorMap = (dataKey: string): ReadonlyMap<number, string> =>
@@ -128,7 +126,6 @@ const _krDummyRefiner = (stocks: KrDummyStock[]): UnknownObject[] => {
     ({
       stockCode,
       stockName,
-      // logo, // TODO: API에 logoSrc 들어가는지 확인
       rateOfChange,
       marketCap,
       priceChange,
@@ -144,10 +141,6 @@ const _krDummyRefiner = (stocks: KrDummyStock[]): UnknownObject[] => {
         parent: sectorCode,
         color: getColorByMap(rateOfChange),
         gains: rateOfChange,
-        /** @todo API에 하나로 합치기 */
-        logoSrc:
-          krBaseStocks.find(({ stockCode: code }) => code === stockCode)
-            ?.logo ?? "",
         priceChange,
         y: marketCap,
       });
