@@ -48,6 +48,9 @@
     "kisstkondoros.vscode-codemetrics",
     "formulahendry.auto-close-tag",
     "formulahendry.auto-rename-tag",
-    "mikestead.dotenv"
+    "mikestead.dotenv",
+    "naumovs.color-highlight",
+    "gencer.html-slim-scss-css-class-completion",
+    "mrmlnc.vscode-scss"
   ]
 }

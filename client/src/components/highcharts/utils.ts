@@ -8,6 +8,8 @@ import {
 import { KrDummyStock, UnknownObject } from "@/types";
 
 const { random, floor, ceil } = Math;
+const MAX_GAINS = 6;
+const MIN_GAINS = -6;
 
 const getColorMap = (dataKey: string): ReadonlyMap<number, string> =>
   dataKey.match(colorMapReg)?.[0].toLowerCase() === "blue"
@@ -17,9 +19,19 @@ const getColorMap = (dataKey: string): ReadonlyMap<number, string> =>
 export const getStockColor =
   (colorMap = usBlueColorMap) =>
   (gains: number): string => {
-    const parseGains =
-      gains > 3 ? 3 : gains < -3 ? -3 : gains >= 0 ? floor(gains) : ceil(gains);
-    return colorMap.get(parseGains) as string;
+    /**
+     * @description
+     * 계산하기 쉽게 2배수를 floor해서 비교
+     */
+    let parseGains: number;
+
+    if (gains >= 0) {
+      parseGains = gains >= 3 ? MAX_GAINS : floor(gains * 2);
+    } else {
+      parseGains = gains <= -3 ? MIN_GAINS : ceil(gains * 2);
+    }
+
+    return colorMap.get(parseGains * 0.5) as string;
   };
 
 export const getRelativeSize = (pointSize: number, ratio = 0.2): number => {
@@ -88,7 +100,7 @@ const _usDummyRefiner = (sectors: UnknownObject[], dataKey = `US-Green`) => {
   const getColorByMap = getStockColor(getColorMap(dataKey));
   sectors?.forEach(({ name: sectorName, stocks }, sectorId) => {
     const value = (stocks as TreemapStock[]).reduce(
-      (acc, { name: stockName, marketCap, logoSrc = "" }, stockId) => {
+      (acc, { name: stockName, marketCap }, stockId) => {
         /** @todo API에서 받아오는 것으로 수정 필요 */
         const gains = random() * 5 * (random() < 0.5 ? -1 : +1);
 
@@ -99,7 +111,6 @@ const _usDummyRefiner = (sectors: UnknownObject[], dataKey = `US-Green`) => {
           parent: `${sectorId}`,
           color: getColorByMap(gains),
           gains,
-          logoSrc,
         });
         return (acc += marketCap);
       },
