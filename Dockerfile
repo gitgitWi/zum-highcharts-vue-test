@@ -1,4 +1,4 @@
-FROM debian:stable-slim
+FROM --platform=linux/amd64 debian:stable-slim
 
 RUN apt update
 RUN apt-get update

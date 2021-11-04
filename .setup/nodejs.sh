@@ -1,7 +1,7 @@
 # install Nodejs
 asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
-asdf install nodejs lts
-asdf global nodejs lts
+asdf install nodejs lts-fermium
+asdf global nodejs lts-fermium
 echo "Node installed!"
 node -v
 
