@@ -126,5 +126,5 @@ export const widthLevelToFontSizeArray: ReadonlyArray<[number, number]> = [
   [60, 12],
   [50, 10],
   [36, 9],
-  [MIN_SAFE_INTEGER, 9],
+  [MIN_SAFE_INTEGER, 0],
 ];

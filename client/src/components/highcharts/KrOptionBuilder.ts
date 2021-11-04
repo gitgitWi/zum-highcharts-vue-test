@@ -1,5 +1,4 @@
 // import {
-//   getLogoHtml,
 //   getStockGainHtml,
 //   getStockNameHtml,
 // } from "@/components/highcharts/utils";

@@ -2,6 +2,7 @@ import { ChartPointStock, Options } from "@/components/highcharts/types";
 import {
   borderColor,
   MAX_SAFE_INTEGER,
+  MIN_SAFE_INTEGER,
 } from "@/components/highcharts/constants";
 import {
   getFontSize,
@@ -29,8 +30,8 @@ export const getChartOptions = (
 
   chart: {
     type: "treemap",
-    zoomType: "xy",
     backgroundColor: mainColor,
+    spacing: [30, 60, 30, 60],
   },
 
   /**
@@ -46,7 +47,7 @@ export const getChartOptions = (
         duration: 0,
       },
       allowTraversingTree: true,
-      animationLimit: 300,
+      animationLimit: 200,
       levelIsConstant: true,
 
       label: {
@@ -60,20 +61,21 @@ export const getChartOptions = (
         {
           level: 1,
           layoutAlgorithm: "squarified",
-          // layoutAlgorithm: "sliceAndDice",
           layoutStartingDirection: "horizontal",
           dataLabels: {
             enabled: true,
-            crop: false,
+            crop: true,
             defer: false,
             useHTML: true,
             align: "left",
-            allowOverlap: false,
+            allowOverlap: true,
             style: {
               textOverflow: "ellipsis",
             },
+
             inside: true,
-            padding: 5,
+            z: 20,
+            padding: 3,
             verticalAlign: "top",
             backgroundColor: mainColor,
 
@@ -85,7 +87,7 @@ export const getChartOptions = (
                 },
               } = this.point as ChartPointStock;
               const fontSize = getFontSize(min(width, height));
-
+              if (fontSize <= 0) return ``;
               return `<span class="sector-label ${
                 mainColor === borderColor ? "black-theme" : "white-theme"
               }" style="font-size: ${fontSize}px">${this.key}</span>`;
@@ -97,9 +99,6 @@ export const getChartOptions = (
         {
           level: 2,
           layoutAlgorithm: "squarified",
-          // layoutAlgorithm: "sliceAndDice",
-          // layoutAlgorithm: "stripes",
-          // layoutAlgorithm: "strip",
           layoutStartingDirection: "horizontal",
           dataLabels: {
             enabled: true,
@@ -108,7 +107,9 @@ export const getChartOptions = (
             crop: true,
             style: {
               textAlign: "center",
+              textOverflow: "hidden",
             },
+            z: 10,
             formatter() {
               /** @description 신규상장주인 경우 시가총액 데이터 없음 */
               if (!(this.point as ChartPointStock)?.shapeArgs) return ``;
@@ -145,7 +146,7 @@ export const getChartOptions = (
 
       traverseUpButton: {
         position: {
-          // y: -35,
+          y: 10,
         },
       },
     },
@@ -184,10 +185,7 @@ export const globalOptions: Options = {
   responsive: {
     rules: [
       {
-        condition: {
-          maxWidth: 1200,
-          minHeight: 600,
-        },
+        condition: {},
         chartOptions: {},
       },
     ],

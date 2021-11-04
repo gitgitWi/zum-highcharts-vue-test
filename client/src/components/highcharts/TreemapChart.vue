@@ -32,7 +32,7 @@ export default Vue.extend({
   data() {
     return {
       chartOptions: {},
-      currentDataKey: DataKeys.KosdaqBlue,
+      currentDataKey: DataKeys.KrBlueBlack,
       isLoading: true,
     };
   },
@@ -85,7 +85,6 @@ export default Vue.extend({
 #chart-wrapper {
   width: 100%;
   min-width: 600px;
-  max-width: 1800px;
   height: max-content;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
   display: grid;
@@ -108,7 +107,7 @@ export default Vue.extend({
 
 #container {
   width: 100%;
-  max-width: 1600px;
+  min-width: 600px;
   height: 900px;
 }
 </style>

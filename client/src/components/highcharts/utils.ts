@@ -61,6 +61,7 @@ export const getStockNameHtml = (
   pointSize: number
 ): string => {
   const fontSize = getFontSize(pointSize);
+  if (fontSize === 0) return ``;
   return `
     <span 
       style="
