@@ -13,7 +13,7 @@ const configs = {
       },
     },
   },
-  lintOnSave: process.env.NODE_ENV === "production" ? false : true,
+  lintOnSave: process.env.NODE_ENV === "production" ? false : "default",
 };
 
 module.exports = configs;
