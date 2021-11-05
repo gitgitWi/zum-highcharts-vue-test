@@ -8,7 +8,7 @@
   },
   "scripts": {
     "serve": "echo VUE_APP_LAST_BUILD=\"$(date +'%Y-%m-%dT%H:%M:%S')\" > .env && vue-cli-service serve",
-    "build": "NODE_ENV=production vue-cli-service build",
+    "build": "NODE_ENV=production vue-cli-service build  --skip-plugins eslint",
     "lint": "vue-cli-service lint"
   },
   "main": "index.js",
