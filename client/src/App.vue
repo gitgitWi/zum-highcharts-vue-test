@@ -1,21 +1,20 @@
 <template>
   <div id="app">
     <header-wrapper />
-    <treemap-chart />
+    <router-view />
     <footer-wrapper />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import { TreemapChart, HeaderWrapper, FooterWrapper } from "./components";
+import { HeaderWrapper, FooterWrapper } from "./components";
 
 export default Vue.extend({
   name: "App",
 
   components: {
     HeaderWrapper,
-    TreemapChart,
     FooterWrapper,
   },
 });
