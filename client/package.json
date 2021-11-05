@@ -8,14 +8,12 @@
   },
   "scripts": {
     "serve": "echo VUE_APP_LAST_BUILD=\"$(date +'%Y-%m-%dT%H:%M:%S')\" > .env && vue-cli-service serve",
-    "build": "NODE_ENV=production vue-cli-service build --skip-plugins @vue/cli-plugin-eslint",
+    "build": "NODE_ENV=production vue-cli-service build --skip-plugins @vue/cli-plugin-eslint,@vue/cli-plugin-typescript",
     "lint": "vue-cli-service lint"
   },
   "main": "index.js",
   "dependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-plugin-typescript": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "core-js": "^3.6.5",
     "d3": "^7.1.1",
@@ -32,6 +30,8 @@
     "@types/d3": "^7.1.0",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-typescript": "~4.5.0",
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/eslint-config-typescript": "^7.0.0",
     "eslint": "^6.7.2",
