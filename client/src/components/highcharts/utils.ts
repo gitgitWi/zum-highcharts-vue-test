@@ -1,39 +1,10 @@
 import { TreemapStock } from "@/components/highcharts/types";
-import {
-  colorMapReg,
-  krBlueColorMap,
-  usBlueColorMap,
-  usGreenColorMap,
-  widthLevelToFontSizeArray,
-} from "@/components/highcharts/constants";
+import { widthLevelToFontSizeArray } from "@/components/highcharts/constants";
 import { KrDummyStock, UnknownObject } from "@/types";
+import { getColorMap, getStockColor } from "@/utils/colors";
+import { krBlueColorMap } from "@/constants";
 
 const { random, floor, ceil } = Math;
-const MAX_GAINS = 6;
-const MIN_GAINS = -6;
-
-const getColorMap = (dataKey: string): ReadonlyMap<number, string> =>
-  dataKey.match(colorMapReg)?.[0].toLowerCase() === "blue"
-    ? usBlueColorMap
-    : usGreenColorMap;
-
-export const getStockColor =
-  (colorMap = usBlueColorMap) =>
-  (gains: number): string => {
-    /**
-     * @description
-     * 계산하기 쉽게 2배수를 floor해서 비교
-     */
-    let parseGains: number;
-
-    if (gains >= 0) {
-      parseGains = gains >= 3 ? MAX_GAINS : ceil(gains * 2);
-    } else {
-      parseGains = gains <= -3 ? MIN_GAINS : floor(gains * 2);
-    }
-
-    return colorMap.get(parseGains * 0.5) as string;
-  };
 
 /**
  * 각 종목 영역 사이즈에 맞는 폰트 사이즈 탐색
