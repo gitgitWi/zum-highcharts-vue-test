@@ -1,17 +1,14 @@
+import { MAX_SAFE_INTEGER } from "@/constants";
+import { min } from "@/utils";
+
 import { ChartPointStock, Options } from "@/components/highcharts/types";
-import {
-  borderColor,
-  MAX_SAFE_INTEGER,
-  MIN_SAFE_INTEGER,
-} from "@/components/highcharts/constants";
+import { borderColor } from "@/components/highcharts/constants";
 import {
   getFontSize,
   getStockGainHtml,
   getStockNameHtml,
 } from "@/components/highcharts/utils";
 import { KrMapOptionBuilder } from "./KrOptionBuilder";
-
-const { min } = Math;
 
 /**
  * @see {https://api.highcharts.com/highcharts/}
